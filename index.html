@@ -577,7 +577,12 @@ footer{background:var(--bg2);border-top:1px solid var(--borderfaint);padding:64p
         
        <div class="portfolio-grid" id="portfolioGrid">
   <div class="portfolio-item" data-cat="master">
-    <div class="portfolio-thumb" style="background:linear-gradient(135deg,#1a2520,#152535)">💎</div>
+    <!-- Make the thumbnail (emoji) a link -->
+    <a href="https://open.spotify.com/album/7omQHtoN9RKCd260MksIlA" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">
+      <div class="portfolio-thumb" style="background:linear-gradient(135deg,#1a2520,#152535); cursor:pointer;">
+        💎
+      </div>
+    </a>
     <div class="portfolio-meta">
       <span class="portfolio-type">Mastering</span>
       <h3>Tell It As It Is</h3>
@@ -585,6 +590,7 @@ footer{background:var(--bg2);border-top:1px solid var(--borderfaint);padding:64p
       <a href="https://open.spotify.com/album/7omQHtoN9RKCd260MksIlA" target="_blank" class="play-btn">▶ Listen</a>
     </div>
   </div>
+</div>
 
   <div class="portfolio-item" data-cat="av">
     <!-- Only thumbnail is clickable, not whole tile! -->
