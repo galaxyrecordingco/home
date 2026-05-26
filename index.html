@@ -1,1371 +1,943 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Galaxy Recording Co — Professional Recording Engineering & AV Technology. Radio-ready mixes, live event sound, and remote sessions for artists, businesses & brands. Based in Muncy, PA." />
-  <meta name="keywords" content="recording studio, mixing, mastering, audio engineer, AV tech, live sound, remote recording, podcast production, Muncy PA" />
-  <meta name="author" content="Galaxy Recording Co" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Galaxy Recording Co</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+--bg:#080a0f;--bg2:#0d1018;--bg3:#111520;--surface:#131825;--surface2:#1a2235;
+--accent:#c8a96e;--accent2:#e8c98a;--accentglow:rgba(200,169,110,0.25);
+--text:#f0ede8;--textmuted:#8a95a8;--textdim:#4a5568;
+--border:rgba(200,169,110,0.15);--borderfaint:rgba(255,255,255,0.06);
+--red:#e05a5a;--green:#5ae0a0;
+}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.65;overflow-x:hidden;min-height:100vh}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,h4{font-family:'Bebas Neue',sans-serif;letter-spacing:0.04em;line-height:1.1}
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="Galaxy Recording Co — Sound That Hits Different" />
-  <meta property="og:description" content="Professional Recording Engineering & AV Technology. Remote & on-site. Artists, businesses & brands." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://galaxyrecordingco.com" />
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(8,10,15,0.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--borderfaint);padding:0 2rem;height:64px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center;gap:10px;cursor:pointer}
+.nav-logo-icon{width:36px;height:36px;background:linear-gradient(135deg,var(--accent),#8b6a3e);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue';font-size:18px;color:#080a0f}
+.nav-logo-text{font-family:'Bebas Neue';font-size:20px;letter-spacing:0.08em;color:var(--accent)}
+.nav-links{display:flex;gap:4px;align-items:center}
+.nav-link{padding:6px 12px;border-radius:6px;font-size:13px;font-weight:500;color:var(--textmuted);cursor:pointer;transition:all 0.2s;white-space:nowrap}
+.nav-link:hover{color:var(--text);background:var(--borderfaint)}
+.nav-link.active{color:var(--accent);background:var(--accentglow)}
+.nav-cta{padding:7px 16px;border-radius:6px;background:var(--accent);color:#080a0f;font-size:13px;font-weight:600;cursor:pointer;transition:all 0.2s;margin-left:8px;white-space:nowrap}
+.nav-cta:hover{background:var(--accent2);transform:translateY(-1px)}
+.nav-mobile-btn{display:none;background:none;border:none;color:var(--text);font-size:22px;cursor:pointer}
 
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Galaxy Recording Co" />
-  <meta name="twitter:description" content="Professional Recording Engineering & AV Technology." />
+/* PAGES */
+.page{display:none;padding-top:64px;min-height:100vh;animation:fadeIn 0.35s ease}
+.page.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
 
-  <title>Galaxy Recording Co — Sound That Hits Different</title>
+/* HERO */
+.hero{min-height:calc(100vh - 64px);display:flex;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;background:radial-gradient(ellipse 80% 60% at 50% 0%, rgba(200,169,110,0.08) 0%, transparent 70%)}
+.hero-bg-grid{position:absolute;inset:0;background-image:linear-gradient(var(--borderfaint) 1px,transparent 1px),linear-gradient(90deg,var(--borderfaint) 1px,transparent 1px);background-size:60px 60px;opacity:0.4}
+.hero-content{position:relative;z-index:1;max-width:760px;padding:0 2rem}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--accentglow);border:1px solid var(--border);border-radius:100px;padding:6px 16px;font-size:12px;color:var(--accent);letter-spacing:0.08em;text-transform:uppercase;font-weight:600;margin-bottom:2rem}
+.hero-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent);display:block;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
+.hero h1{font-size:clamp(52px,8vw,92px);color:var(--text);margin-bottom:1.5rem}
+.hero h1 span{color:var(--accent)}
+.hero-sub{font-size:17px;color:var(--textmuted);max-width:540px;margin:0 auto 2.5rem;line-height:1.7}
+.hero-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn-primary{padding:13px 28px;background:var(--accent);color:#080a0f;border-radius:8px;font-weight:600;font-size:15px;cursor:pointer;transition:all 0.2s;border:none;display:inline-flex;align-items:center;gap:8px}
+.btn-primary:hover{background:var(--accent2);transform:translateY(-2px)}
+.btn-secondary{padding:13px 28px;background:transparent;color:var(--text);border-radius:8px;font-weight:500;font-size:15px;cursor:pointer;transition:all 0.2s;border:1px solid var(--border);display:inline-flex;align-items:center;gap:8px}
+.btn-secondary:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+/* STATS BAR */
+.stats-bar{display:flex;gap:0;border-top:1px solid var(--borderfaint);border-bottom:1px solid var(--borderfaint);background:var(--surface)}
+.stat-item{flex:1;text-align:center;padding:1.5rem 1rem;border-right:1px solid var(--borderfaint)}
+.stat-item:last-child{border-right:none}
+.stat-num{font-family:'Bebas Neue';font-size:36px;color:var(--accent);display:block;line-height:1}
+.stat-label{font-size:12px;color:var(--textmuted);text-transform:uppercase;letter-spacing:0.08em;margin-top:4px}
 
-  <!-- Stylesheet -->
-  <link rel="stylesheet" href="css/style.css" />
+/* SECTION */
+.section{padding:80px 2rem}
+.section-max{max-width:1100px;margin:0 auto}
+.section-tag{font-family:'Space Mono';font-size:11px;color:var(--accent);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:12px;display:block}
+.section-title{font-size:clamp(36px,5vw,56px);margin-bottom:1rem;color:var(--text)}
+.section-sub{color:var(--textmuted);max-width:560px;margin-bottom:3rem;font-size:16px}
+.section-dark{background:var(--bg2)}
+.section-surface{background:var(--bg3)}
 
-  <!-- Favicon placeholder -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%23c8a96e'/><text y='.9em' font-size='70' x='14'>G</text></svg>" />
+/* CARDS */
+.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.card{background:var(--surface);border:1px solid var(--borderfaint);border-radius:16px;padding:28px;transition:all 0.3s;position:relative;overflow:hidden}
+.card:hover{border-color:var(--border);transform:translateY(-4px);background:var(--surface2)}
+.card-icon{width:48px;height:48px;border-radius:12px;background:var(--accentglow);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:20px}
+.card h3{font-family:'Bebas Neue';font-size:22px;margin-bottom:8px;color:var(--text)}
+.card p{color:var(--textmuted);font-size:14px;line-height:1.65}
+.card-accent{border-color:var(--border);background:linear-gradient(135deg,var(--surface) 0%,rgba(200,169,110,0.05) 100%)}
+
+/* SERVICES CARDS */
+.service-card{background:var(--surface);border:1px solid var(--borderfaint);border-radius:16px;padding:32px;transition:all 0.3s}
+.service-card:hover{border-color:var(--border);transform:translateY(-4px)}
+.service-num{font-family:'Space Mono';font-size:11px;color:var(--accent);margin-bottom:16px;display:block}
+.service-price{font-family:'Bebas Neue';font-size:32px;color:var(--accent);margin-top:16px}
+.service-price span{font-family:'DM Sans';font-size:14px;color:var(--textmuted);font-weight:400}
+.tag{display:inline-flex;padding:4px 10px;border-radius:100px;font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;background:var(--accentglow);color:var(--accent);border:1px solid var(--border);margin-bottom:12px}
+
+/* PRICING */
+.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin-top:3rem}
+.price-card{background:var(--surface);border:1px solid var(--borderfaint);border-radius:20px;padding:36px;text-align:center;transition:all 0.3s}
+.price-card.featured{border-color:var(--accent);background:linear-gradient(160deg,var(--surface2) 0%,rgba(200,169,110,0.06) 100%)}
+.price-card:hover{transform:translateY(-4px)}
+.price-name{font-family:'Bebas Neue';font-size:24px;margin-bottom:8px}
+.price-amount{font-family:'Bebas Neue';font-size:56px;color:var(--accent);line-height:1}
+.price-period{font-size:13px;color:var(--textmuted);margin-bottom:24px}
+.price-features{list-style:none;text-align:left;margin:24px 0;display:flex;flex-direction:column;gap:10px}
+.price-features li{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--textmuted)}
+.price-features li::before{content:'✓';color:var(--accent);font-weight:700;font-size:12px;width:18px;height:18px;border-radius:50%;background:var(--accentglow);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.popular-badge{display:inline-block;background:var(--accent);color:#080a0f;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:4px 12px;border-radius:100px;margin-bottom:16px}
+
+/* TESTIMONIALS */
+.testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+.testi-card{background:var(--surface);border:1px solid var(--borderfaint);border-radius:16px;padding:28px}
+.testi-stars{color:var(--accent);font-size:14px;margin-bottom:16px;letter-spacing:2px}
+.testi-text{color:var(--textmuted);font-size:14px;line-height:1.7;margin-bottom:20px;font-style:italic}
+.testi-author{display:flex;align-items:center;gap:12px}
+.testi-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--accent),#8b6a3e);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue';font-size:16px;color:#080a0f;flex-shrink:0}
+.testi-name{font-weight:600;font-size:14px}
+.testi-role{font-size:12px;color:var(--textmuted)}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.contact-form{background:var(--surface);border:1px solid var(--borderfaint);border-radius:20px;padding:36px}
+.form-group{margin-bottom:20px}
+.form-group label{display:block;font-size:13px;font-weight:600;color:var(--textmuted);margin-bottom:8px;text-transform:uppercase;letter-spacing:0.06em}
+.form-group input,.form-group textarea,.form-group select{width:100%;background:var(--bg3);border:1px solid var(--borderfaint);border-radius:8px;padding:12px 14px;color:var(--text);font-family:'DM Sans';font-size:14px;transition:border-color 0.2s;outline:none}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:var(--accent)}
+.form-group textarea{height:120px;resize:vertical}
+.form-group select option{background:var(--bg)}
+.contact-info{display:flex;flex-direction:column;gap:24px}
+.contact-info-card{background:var(--surface);border:1px solid var(--borderfaint);border-radius:12px;padding:20px;display:flex;gap:16px;align-items:flex-start}
+.contact-icon{width:40px;height:40px;border-radius:10px;background:var(--accentglow);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.contact-detail h4{font-size:14px;font-weight:600;margin-bottom:4px}
+.contact-detail p{font-size:13px;color:var(--textmuted)}
+
+/* PORTFOLIO */
+.portfolio-filter{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:2.5rem}
+.filter-btn{padding:7px 16px;border-radius:100px;font-size:13px;font-weight:500;cursor:pointer;border:1px solid var(--borderfaint);background:transparent;color:var(--textmuted);transition:all 0.2s}
+.filter-btn.active,.filter-btn:hover{border-color:var(--accent);color:var(--accent);background:var(--accentglow)}
+.portfolio-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
+.portfolio-item{border-radius:16px;overflow:hidden;background:var(--surface);border:1px solid var(--borderfaint);transition:all 0.3s;cursor:pointer}
+.portfolio-item:hover{border-color:var(--border);transform:translateY(-4px)}
+.portfolio-thumb{height:180px;display:flex;align-items:center;justify-content:center;font-size:48px;position:relative;overflow:hidden}
+.portfolio-thumb::after{content:'▶';position:absolute;width:44px;height:44px;background:var(--accent);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;color:#080a0f;opacity:0;transition:opacity 0.2s}
+.portfolio-item:hover .portfolio-thumb::after{opacity:1}
+.portfolio-meta{padding:20px}
+.portfolio-type{font-size:11px;color:var(--accent);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px;font-weight:600}
+.portfolio-meta h3{font-family:'Bebas Neue';font-size:20px;margin-bottom:4px}
+.portfolio-meta p{font-size:13px;color:var(--textmuted)}
+
+/* FAQ */
+.faq-list{display:flex;flex-direction:column;gap:12px;max-width:780px}
+.faq-item{background:var(--surface);border:1px solid var(--borderfaint);border-radius:12px;overflow:hidden;transition:border-color 0.2s}
+.faq-item.open{border-color:var(--border)}
+.faq-q{padding:20px 24px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-weight:500;font-size:15px}
+.faq-q::after{content:'+';font-size:20px;color:var(--accent);transition:transform 0.2s;flex-shrink:0}
+.faq-item.open .faq-q::after{transform:rotate(45deg)}
+.faq-a{padding:0 24px 20px;color:var(--textmuted);font-size:14px;line-height:1.7;display:none}
+.faq-item.open .faq-a{display:block}
+
+/* DASHBOARD */
+.dashboard{display:grid;grid-template-columns:220px 1fr;min-height:calc(100vh - 64px)}
+.dash-sidebar{background:var(--bg2);border-right:1px solid var(--borderfaint);padding:24px 0;display:flex;flex-direction:column}
+.dash-nav-section{padding:0 12px;margin-bottom:24px}
+.dash-nav-label{font-size:10px;text-transform:uppercase;letter-spacing:0.1em;color:var(--textdim);padding:0 12px;margin-bottom:8px;font-weight:600}
+.dash-nav-item{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:8px;cursor:pointer;font-size:14px;color:var(--textmuted);transition:all 0.2s;margin-bottom:2px}
+.dash-nav-item:hover{color:var(--text);background:var(--borderfaint)}
+.dash-nav-item.active{color:var(--accent);background:var(--accentglow)}
+.dash-nav-item .icon{font-size:16px}
+.dash-main{background:var(--bg3);padding:32px;overflow-y:auto}
+.dash-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:32px}
+.dash-greeting h2{font-family:'Bebas Neue';font-size:32px}
+.dash-greeting p{color:var(--textmuted);font-size:14px}
+.dash-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:28px}
+.dash-stat{background:var(--surface);border:1px solid var(--borderfaint);border-radius:12px;padding:20px}
+.dash-stat-label{font-size:12px;color:var(--textmuted);margin-bottom:8px;text-transform:uppercase;letter-spacing:0.06em}
+.dash-stat-val{font-family:'Bebas Neue';font-size:32px;color:var(--text);line-height:1}
+.dash-stat-change{font-size:12px;color:var(--green);margin-top:4px}
+.dash-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.dash-panel{background:var(--surface);border:1px solid var(--borderfaint);border-radius:16px;padding:24px}
+.dash-panel h3{font-family:'Bebas Neue';font-size:20px;margin-bottom:16px;color:var(--text)}
+.dash-activity-item{display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--borderfaint)}
+.dash-activity-item:last-child{border-bottom:none}
+.activity-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);flex-shrink:0;margin-top:6px}
+.activity-text{font-size:13px;color:var(--textmuted)}
+.activity-time{font-size:11px;color:var(--textdim);margin-top:2px;font-family:'Space Mono'}
+.dash-project-item{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--borderfaint)}
+.dash-project-item:last-child{border-bottom:none}
+.proj-name{font-size:14px;font-weight:500;margin-bottom:3px}
+.proj-client{font-size:12px;color:var(--textmuted)}
+.proj-status{font-size:11px;font-weight:600;padding:3px 10px;border-radius:100px}
+.status-mix{background:rgba(200,169,110,0.15);color:var(--accent)}
+.status-master{background:rgba(90,224,160,0.15);color:var(--green)}
+.status-record{background:rgba(224,90,90,0.15);color:var(--red)}
+.notification-dot{width:8px;height:8px;background:var(--red);border-radius:50%;position:absolute;top:-2px;right:-2px}
+
+/* BLOG */
+.blog-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px}
+.blog-card{background:var(--surface);border:1px solid var(--borderfaint);border-radius:16px;overflow:hidden;transition:all 0.3s;cursor:pointer}
+.blog-card:hover{border-color:var(--border);transform:translateY(-4px)}
+.blog-thumb{height:160px;display:flex;align-items:center;justify-content:center;font-size:44px}
+.blog-body{padding:24px}
+.blog-tag{font-size:11px;color:var(--accent);text-transform:uppercase;letter-spacing:0.08em;font-weight:600;margin-bottom:8px;display:block}
+.blog-body h3{font-family:'Bebas Neue';font-size:22px;margin-bottom:8px;line-height:1.2}
+.blog-body p{font-size:13px;color:var(--textmuted);line-height:1.65;margin-bottom:16px}
+.blog-meta{display:flex;gap:16px;font-size:12px;color:var(--textdim);font-family:'Space Mono'}
+
+/* ABOUT */
+.about-hero{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;margin-bottom:64px}
+.about-img{height:400px;background:linear-gradient(135deg,var(--surface) 0%,var(--surface2) 100%);border-radius:20px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:80px;position:relative;overflow:hidden}
+.about-img::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,var(--accentglow),transparent 70%)}
+.skill-bar{margin-bottom:16px}
+.skill-name{display:flex;justify-content:space-between;font-size:13px;margin-bottom:6px;color:var(--textmuted)}
+.skill-track{background:var(--surface2);border-radius:100px;height:4px;overflow:hidden}
+.skill-fill{height:100%;border-radius:100px;background:linear-gradient(90deg,var(--accent),var(--accent2))}
+
+/* EQUIPMENT */
+.equipment-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
+.equip-card{background:var(--surface);border:1px solid var(--borderfaint);border-radius:12px;padding:20px;transition:all 0.2s}
+.equip-card:hover{border-color:var(--border)}
+.equip-cat{font-size:10px;color:var(--accent);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:8px;font-weight:600;font-family:'Space Mono'}
+.equip-card h4{font-size:15px;font-weight:600;margin-bottom:4px}
+.equip-card p{font-size:13px;color:var(--textmuted)}
+
+/* FOOTER */
+footer{background:var(--bg2);border-top:1px solid var(--borderfaint);padding:64px 2rem 32px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;max-width:1100px;margin:0 auto 48px}
+.footer-brand p{color:var(--textmuted);font-size:14px;margin-top:12px;max-width:280px;line-height:1.7}
+.footer-col h4{font-family:'Bebas Neue';font-size:18px;margin-bottom:16px;color:var(--text)}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+.footer-col ul li{font-size:14px;color:var(--textmuted);cursor:pointer;transition:color 0.2s}
+.footer-col ul li:hover{color:var(--accent)}
+.footer-bottom{max-width:1100px;margin:0 auto;padding-top:24px;border-top:1px solid var(--borderfaint);display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--textdim)}
+.social-links{display:flex;gap:12px}
+.social-link{width:36px;height:36px;border-radius:8px;background:var(--surface);border:1px solid var(--borderfaint);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.2s;font-size:14px}
+.social-link:hover{border-color:var(--accent);color:var(--accent);background:var(--accentglow)}
+
+/* NEWSLETTER */
+.newsletter-bar{background:linear-gradient(135deg,var(--surface) 0%,rgba(200,169,110,0.06) 100%);border:1px solid var(--border);border-radius:20px;padding:48px;text-align:center;margin:64px 0}
+.newsletter-bar h2{font-family:'Bebas Neue';font-size:40px;margin-bottom:12px}
+.newsletter-bar p{color:var(--textmuted);margin-bottom:24px}
+.newsletter-form{display:flex;gap:12px;max-width:460px;margin:0 auto}
+.newsletter-form input{flex:1;background:var(--bg);border:1px solid var(--borderfaint);border-radius:8px;padding:12px 16px;color:var(--text);font-family:'DM Sans';font-size:14px;outline:none}
+.newsletter-form input:focus{border-color:var(--accent)}
+
+/* MOBILE */
+.mobile-menu{display:none;position:fixed;top:64px;left:0;right:0;bottom:0;background:rgba(8,10,15,0.98);z-index:99;padding:24px;flex-direction:column;gap:8px;overflow-y:auto}
+.mobile-menu.open{display:flex}
+.mobile-link{padding:14px 16px;border-radius:8px;font-size:16px;font-weight:500;color:var(--textmuted);cursor:pointer;border:1px solid transparent;transition:all 0.2s}
+.mobile-link:hover,.mobile-link.active{color:var(--accent);border-color:var(--border);background:var(--accentglow)}
+
+@media(max-width:900px){
+.contact-grid{grid-template-columns:1fr}
+.about-hero{grid-template-columns:1fr}
+.dashboard{grid-template-columns:1fr}
+.dash-sidebar{display:none}
+.dash-stats{grid-template-columns:repeat(2,1fr)}
+.dash-grid{grid-template-columns:1fr}
+.footer-grid{grid-template-columns:1fr 1fr}
+.nav-links{display:none}
+.nav-cta{display:none}
+.nav-mobile-btn{display:block}
+}
+@media(max-width:500px){
+.stats-bar{flex-wrap:wrap}
+.stat-item{flex:1 1 50%;border-right:none;border-bottom:1px solid var(--borderfaint)}
+.dash-stats{grid-template-columns:1fr 1fr}
+.footer-grid{grid-template-columns:1fr}
+.hero h1{font-size:44px}
+}
+</style>
 </head>
 <body>
 
-<!-- ============================================================
-     LOADING SCREEN
-     ============================================================ -->
-<div id="loader" style="
-  position:fixed;inset:0;z-index:999;
-  background:#080a0f;
-  display:flex;flex-direction:column;
-  align-items:center;justify-content:center;gap:20px;
-">
-  <div style="font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:0.1em;color:#c8a96e;">GALAXY RECORDING CO</div>
-  <div style="width:180px;height:2px;background:#1a2235;border-radius:2px;overflow:hidden;">
-    <div style="height:100%;background:linear-gradient(90deg,#c8a96e,#e8c98a);border-radius:2px;animation:loadBar 0.8s ease forwards;">
-    </div>
+<nav>
+  <div class="nav-logo" onclick="showPage('home')">
+    <div class="nav-logo-icon">G</div>
+    <span class="nav-logo-text">Galaxy Recording Co</span>
   </div>
-  <style>
-    @keyframes loadBar{from{width:0}to{width:100%}}
-  </style>
-</div>
-
-
-<!-- ============================================================
-     SEARCH OVERLAY
-     ============================================================ -->
-<div id="search-overlay" class="search-overlay" onclick="if(event.target===this)closeSearch()">
-  <div class="search-box">
-    <span class="search-icon-lrg">🔍</span>
-    <input id="search-input" type="text" placeholder="Search services, portfolio, blog…" />
-    <span class="search-close" onclick="closeSearch()">✕</span>
+  <div class="nav-links">
+    <div class="nav-link active" onclick="showPage('home')">Home</div>
+    <div class="nav-link" onclick="showPage('about')">About</div>
+    <div class="nav-link" onclick="showPage('services')">Services</div>
+    <div class="nav-link" onclick="showPage('portfolio')">Portfolio</div>
+    <div class="nav-link" onclick="showPage('pricing')">Pricing</div>
+    <div class="nav-link" onclick="showPage('blog')">Updates</div>
+    <div class="nav-link" onclick="showPage('contact')">Contact</div>
+    <div class="nav-link" onclick="showPage('dashboard')">Portal</div>
+    <div class="nav-cta" onclick="showPage('contact')">Book a Session ↗</div>
   </div>
-</div>
-
-
-<!-- ============================================================
-     NAVIGATION
-     ============================================================ -->
-<nav class="nav" role="navigation" aria-label="Main navigation">
-
-  <!-- Logo -->
-  <div class="nav-logo" onclick="showPage('home')" role="link" tabindex="0" aria-label="Galaxy Recording Co — Home">
-    <div class="nav-logo-mark" aria-hidden="true">G</div>
-    <div class="nav-logo-text">
-      <span class="nav-logo-primary">Galaxy Recording Co</span>
-      <span class="nav-logo-sub">Audio &amp; AV Engineering</span>
-    </div>
-  </div>
-
-  <!-- Desktop links -->
-  <div class="nav-links" role="menubar">
-    <div class="nav-link active" data-page="home"      onclick="showPage('home')"      role="menuitem" tabindex="0">Home</div>
-    <div class="nav-link"        data-page="about"     onclick="showPage('about')"     role="menuitem" tabindex="0">About</div>
-    <div class="nav-link"        data-page="services"  onclick="showPage('services')"  role="menuitem" tabindex="0">Services</div>
-    <div class="nav-link"        data-page="portfolio" onclick="showPage('portfolio')" role="menuitem" tabindex="0">Portfolio</div>
-    <div class="nav-link"        data-page="pricing"   onclick="showPage('pricing')"   role="menuitem" tabindex="0">Pricing</div>
-    <div class="nav-link"        data-page="blog"      onclick="showPage('blog')"      role="menuitem" tabindex="0">Updates</div>
-    <div class="nav-link"        data-page="contact"   onclick="showPage('contact')"   role="menuitem" tabindex="0">Contact</div>
-    <div class="nav-link"        data-page="dashboard" onclick="showPage('dashboard')" role="menuitem" tabindex="0">Client Portal</div>
-  </div>
-
-  <!-- Right controls -->
-  <div class="nav-right">
-    <div class="nav-search" onclick="openSearch()" role="button" tabindex="0" aria-label="Search">
-      <span class="nav-search-icon">🔍</span>
-      <span>Search</span>
-      <span style="font-family:'Space Mono',monospace;font-size:10px;color:var(--text-faint);margin-left:6px;">⌘K</span>
-    </div>
-    <button class="btn nav-cta" onclick="showPage('contact')" aria-label="Book a session">Book a Session ↗</button>
-  </div>
-
-  <!-- Mobile burger -->
-  <button class="nav-burger" id="nav-burger" onclick="toggleMobileMenu()" aria-label="Toggle menu" aria-expanded="false">
-    <span></span>
-    <span></span>
-    <span></span>
-  </button>
-
+  <button class="nav-mobile-btn" onclick="toggleMenu()">☰</button>
 </nav>
 
-<!-- Mobile menu -->
-<div id="mobile-menu" class="mobile-menu" role="menu" aria-label="Mobile navigation">
-  <div class="mobile-link active" data-page="home"      onclick="showPage('home')"      role="menuitem">Home</div>
-  <div class="mobile-link"        data-page="about"     onclick="showPage('about')"     role="menuitem">About</div>
-  <div class="mobile-link"        data-page="services"  onclick="showPage('services')"  role="menuitem">Services</div>
-  <div class="mobile-link"        data-page="portfolio" onclick="showPage('portfolio')" role="menuitem">Portfolio</div>
-  <div class="mobile-link"        data-page="pricing"   onclick="showPage('pricing')"   role="menuitem">Pricing</div>
-  <div class="mobile-link"        data-page="blog"      onclick="showPage('blog')"      role="menuitem">Updates</div>
-  <div class="mobile-link"        data-page="contact"   onclick="showPage('contact')"   role="menuitem">Contact</div>
-  <div class="mobile-link"        data-page="dashboard" onclick="showPage('dashboard')" role="menuitem">Client Portal</div>
-  <div style="margin-top:16px">
-    <button class="btn btn-primary btn-full" onclick="showPage('contact');closeMobileMenu()">Book a Session ↗</button>
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-link active" onclick="showPage('home');toggleMenu()">Home</div>
+  <div class="mobile-link" onclick="showPage('about');toggleMenu()">About</div>
+  <div class="mobile-link" onclick="showPage('services');toggleMenu()">Services</div>
+  <div class="mobile-link" onclick="showPage('portfolio');toggleMenu()">Portfolio</div>
+  <div class="mobile-link" onclick="showPage('pricing');toggleMenu()">Pricing</div>
+  <div class="mobile-link" onclick="showPage('blog');toggleMenu()">Updates</div>
+  <div class="mobile-link" onclick="showPage('contact');toggleMenu()">Contact</div>
+  <div class="mobile-link" onclick="showPage('dashboard');toggleMenu()">Client Portal</div>
+</div>
+
+<!-- HOME PAGE -->
+<div class="page active" id="page-home">
+  <div class="hero">
+    <div class="hero-bg-grid"></div>
+    <div class="hero-content">
+      <div class="hero-badge">● Available for Remote & On-Site Work</div>
+      <h1>SOUND THAT <span>HITS</span> DIFFERENT</h1>
+      <p class="hero-sub">Professional Recording Engineering &amp; AV Technology — radio-ready mixes, live event production, and remote sessions for artists, businesses &amp; brands.</p>
+      <div class="hero-actions">
+        <button class="btn-primary" onclick="showPage('services')">Explore Services ↗</button>
+        <button class="btn-secondary" onclick="showPage('portfolio')">▶ Hear Our Work</button>
+      </div>
+    </div>
+  </div>
+  <div class="stats-bar">
+    <div class="stat-item"><span class="stat-num">100+</span><span class="stat-label">Projects Completed</span></div>
+    <div class="stat-item"><span class="stat-num">50+</span><span class="stat-label">Artists Worked With</span></div>
+    <div class="stat-item"><span class="stat-num">2+</span><span class="stat-label">Years Operating</span></div>
+    <div class="stat-item"><span class="stat-num">∞</span><span class="stat-label">Remote Capable</span></div>
+  </div>
+  <div class="section">
+    <div class="section-max">
+      <span class="section-tag">// What We Do</span>
+      <h2 class="section-title">Two Disciplines.<br>One Studio.</h2>
+      <p class="section-sub">Galaxy Recording Co bridges professional audio engineering and AV tech — delivering pristine sound whether you're in the booth or on the stage.</p>
+      <div class="card-grid">
+        <div class="card card-accent">
+          <div class="card-icon">🎙️</div>
+          <h3>Recording Engineering</h3>
+          <p>Tracking, mixing, mastering, and post-production. Radio-ready results for artists, podcasters, and bands. Remote file delivery available worldwide.</p>
+        </div>
+        <div class="card card-accent">
+          <div class="card-icon">🔊</div>
+          <h3>AV Technology</h3>
+          <p>Live sound, system design, event production, and AV integration for corporate and entertainment clients. On-site or remote consultation.</p>
+        </div>
+        <div class="card card-accent">
+          <div class="card-icon">🌐</div>
+          <h3>Remote Sessions</h3>
+          <p>Work with us from anywhere in the world. Upload your stems, receive professional-grade audio back. Fast turnaround, clear communication.</p>
+        </div>
+        <div class="card card-accent">
+          <div class="card-icon">🏢</div>
+          <h3>Business Audio</h3>
+          <p>Corporate video audio, podcast production, brand videos, training content, and presentation systems for businesses of all sizes.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="section section-dark">
+    <div class="section-max">
+      <span class="section-tag">// Process</span>
+      <h2 class="section-title">How We Work</h2>
+      <div class="card-grid">
+        <div class="card">
+          <span style="font-family:'Space Mono';font-size:11px;color:var(--accent);margin-bottom:12px;display:block">01</span>
+          <h3>Consult</h3>
+          <p>Reach out via the contact form or email. We'll discuss your project, timeline, and goals in detail — no pressure, just a real conversation.</p>
+        </div>
+        <div class="card">
+          <span style="font-family:'Space Mono';font-size:11px;color:var(--accent);margin-bottom:12px;display:block">02</span>
+          <h3>Create</h3>
+          <p>We get to work — in our studio or remotely. Transparent communication throughout so you always know where your project stands.</p>
+        </div>
+        <div class="card">
+          <span style="font-family:'Space Mono';font-size:11px;color:var(--accent);margin-bottom:12px;display:block">03</span>
+          <h3>Deliver</h3>
+          <p>Receive your files, attend your event, or receive your AV installation — polished, on time, and exactly as discussed. Revisions included.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-max">
+      <div class="newsletter-bar">
+        <h2>STAY IN THE LOOP</h2>
+        <p>Industry updates, new services, and exclusive rate announcements for subscribers.</p>
+        <div class="newsletter-form">
+          <input type="email" placeholder="your@email.com">
+          <button class="btn-primary">Subscribe</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="section section-surface" style="padding-top:0">
+    <div class="section-max">
+      <span class="section-tag">// What Clients Say</span>
+      <h2 class="section-title">Real Results</h2>
+      <div class="testi-grid">
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"Galaxy Recording took my demo tracks and turned them into something I'm genuinely proud to release. The remote process was seamless — files in, magic out."</p>
+          <div class="testi-author"><div class="testi-avatar">MK</div><div><div class="testi-name">Marcus K.</div><div class="testi-role">Independent Hip-Hop Artist</div></div></div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"Professional, communicative, and the final mix was exactly what we envisioned. Our corporate event sounded better than any we'd run before. Highly recommend."</p>
+          <div class="testi-author"><div class="testi-avatar">SR</div><div><div class="testi-name">Sandra R.</div><div class="testi-role">Events Director, Regional Tech Co.</div></div></div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"I've worked with a lot of engineers. Galaxy stood out because they actually listened to what the song needed. The mastered version sounds incredible on every platform."</p>
+          <div class="testi-author"><div class="testi-avatar">JL</div><div><div class="testi-name">Jamie L.</div><div class="testi-role">Indie Singer-Songwriter</div></div></div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
-
-<!-- ============================================================
-     PAGE: HOME
-     ============================================================ -->
-<main id="page-home" class="page active" role="main">
-
-  <!-- Hero -->
-  <section class="hero" aria-label="Hero section">
-    <div class="hero-bg" aria-hidden="true">
-      <div class="hero-bg-grid"></div>
-      <div class="hero-bg-glow"></div>
-      <div class="hero-bg-glow2"></div>
-    </div>
-
-    <div class="hero-badge" role="status">
-      <span class="hero-badge-dot" aria-hidden="true"></span>
-      Available for Remote &amp; On-Site Work
-    </div>
-
-    <h1>SOUND THAT<br><span class="accent">HITS</span> DIFFERENT</h1>
-
-    <p class="hero-sub">
-      Professional Recording Engineering &amp; AV Technology —
-      radio-ready mixes, live event production, and remote sessions
-      for artists, businesses &amp; brands.
-    </p>
-
-    <div class="hero-actions">
-      <button class="btn btn-primary" onclick="showPage('services')">Explore Services ↗</button>
-      <button class="btn btn-secondary" onclick="showPage('portfolio')">▶&nbsp; Hear Our Work</button>
-    </div>
-
-    <div class="hero-scroll" aria-hidden="true">
-      <span>Scroll</span>
-      <div class="hero-scroll-line"></div>
-    </div>
-  </section>
-
-  <!-- Stats bar -->
-  <div class="stats-bar" aria-label="Studio statistics">
-    <div class="stats-bar-item">
-      <span class="stats-bar-num">100+</span>
-      <span class="stats-bar-label">Projects Completed</span>
-    </div>
-    <div class="stats-bar-item">
-      <span class="stats-bar-num">50+</span>
-      <span class="stats-bar-label">Artists Worked With</span>
-    </div>
-    <div class="stats-bar-item">
-      <span class="stats-bar-num">2+</span>
-      <span class="stats-bar-label">Years Operating</span>
-    </div>
-    <div class="stats-bar-item">
-      <span class="stats-bar-num">∞</span>
-      <span class="stats-bar-label">Remote Capable</span>
+<!-- ABOUT PAGE -->
+<div class="page" id="page-about">
+  <div class="hero" style="min-height:320px;text-align:left;justify-content:flex-start">
+    <div class="hero-bg-grid"></div>
+    <div class="hero-content" style="text-align:left;padding:80px 2rem 40px;max-width:1100px;margin:0 auto">
+      <div class="hero-badge">● Founded 2023 · Muncy, PA</div>
+      <h1>THE ENGINEER<br>BEHIND THE <span>SOUND</span></h1>
     </div>
   </div>
-
-  <!-- What We Do -->
-  <section class="section">
-    <span class="section-eyebrow">// What We Do</span>
-    <h2 class="section-title">Two Disciplines. One Studio.</h2>
-    <p class="section-sub">Galaxy Recording Co bridges professional audio engineering and AV technology — delivering pristine sound whether you're in the booth, on the stage, or across the globe.</p>
-
-    <div class="grid-4">
-      <div class="card">
-        <div class="card-icon" aria-hidden="true">🎙️</div>
-        <h3>Recording Engineering</h3>
-        <p>Tracking, mixing, mastering, and post-production. Radio-ready results for artists, podcasters, and bands. Remote file delivery available worldwide.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon" aria-hidden="true">🔊</div>
-        <h3>AV Technology</h3>
-        <p>Live sound, system design, event production, and AV integration for corporate and entertainment clients. On-site or remote consultation.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon" aria-hidden="true">🌐</div>
-        <h3>Remote Sessions</h3>
-        <p>Work with us from anywhere in the world. Upload your stems, receive professional-grade audio back. Fast turnaround, clear communication.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon" aria-hidden="true">🏢</div>
-        <h3>Business Audio</h3>
-        <p>Corporate video audio, podcast production, brand videos, training content, and presentation systems for businesses of all sizes.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Process -->
-  <div class="section-full">
-    <section class="section">
-      <span class="section-eyebrow">// Our Process</span>
-      <h2 class="section-title">How We Work</h2>
-      <p class="section-sub">Simple, transparent, and always collaborative — from first contact to final delivery.</p>
-
-      <div class="process-steps">
-        <div class="process-step">
-          <span class="process-num">01 // CONSULT</span>
-          <h3>Consult</h3>
-          <p>Reach out via the contact form or email. We'll discuss your project, timeline, and goals — no pressure, just a real conversation about what you need.</p>
-        </div>
-        <div class="process-step">
-          <span class="process-num">02 // CREATE</span>
-          <h3>Create</h3>
-          <p>We get to work — in our studio or remotely. Transparent communication throughout so you always know exactly where your project stands.</p>
-        </div>
-        <div class="process-step">
-          <span class="process-num">03 // DELIVER</span>
-          <h3>Deliver</h3>
-          <p>Receive your files, attend your event, or get your AV installation — polished, on time, and exactly as discussed. Revisions always included.</p>
-        </div>
-      </div>
-    </section>
-  </div>
-
-  <!-- Testimonials -->
-  <section class="section">
-    <span class="section-eyebrow">// Client Reviews</span>
-    <h2 class="section-title">Real Results</h2>
-    <p class="section-sub">Don't take our word for it — hear from the artists and businesses we've worked with.</p>
-
-    <div class="testi-grid">
-      <div class="testi-card">
-        <span class="testi-quote-mark" aria-hidden="true">"</span>
-        <div class="testi-stars" aria-label="5 stars">★★★★★</div>
-        <p class="testi-text">Galaxy Recording took my demo tracks and turned them into something I'm genuinely proud to release. The remote process was seamless — files in, magic out.</p>
-        <div class="testi-author">
-          <div class="testi-avatar" aria-hidden="true">MK</div>
-          <div>
-            <div class="testi-name">Marcus K.</div>
-            <div class="testi-role">Independent Hip-Hop Artist</div>
+  <div class="section">
+    <div class="section-max">
+      <div class="about-hero">
+        <div>
+          <span class="section-tag">// About Galaxy Recording Co</span>
+          <h2 class="section-title">Precision Audio.<br>Real Experience.</h2>
+          <p style="color:var(--textmuted);line-height:1.8;margin-bottom:1.5rem">Galaxy Recording Co — in partnership with JJ Gair Music — is a professional audio engineering and AV technology operation founded in late 2023. We deliver radio-ready recordings, live event audio, and AV solutions for artists, businesses, and organizations.</p>
+          <p style="color:var(--textmuted);line-height:1.8;margin-bottom:2rem">Whether you're an independent artist looking for your first polished single, a band ready to record an EP, a business needing corporate video audio, or an event that demands flawless live sound — we have the skills, equipment, and experience to make it happen.</p>
+          <div style="display:flex;gap:16px;flex-wrap:wrap">
+            <button class="btn-primary" onclick="showPage('contact')">Work With Us</button>
+            <button class="btn-secondary" onclick="showPage('services')">View Services</button>
           </div>
         </div>
+        <div class="about-img">🎚️</div>
       </div>
-      <div class="testi-card">
-        <span class="testi-quote-mark" aria-hidden="true">"</span>
-        <div class="testi-stars" aria-label="5 stars">★★★★★</div>
-        <p class="testi-text">Professional, communicative, and the final mix was exactly what we envisioned. Our corporate event sounded better than any we'd run before. Highly recommend.</p>
-        <div class="testi-author">
-          <div class="testi-avatar" aria-hidden="true">SR</div>
-          <div>
-            <div class="testi-name">Sandra R.</div>
-            <div class="testi-role">Events Director, Regional Tech Co.</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start">
+        <div>
+          <span class="section-tag">// Skills & Expertise</span>
+          <h3 style="font-family:'Bebas Neue';font-size:28px;margin-bottom:24px">Technical Proficiency</h3>
+          <div class="skill-bar"><div class="skill-name"><span>Mixing & Mastering</span><span>95%</span></div><div class="skill-track"><div class="skill-fill" style="width:95%"></div></div></div>
+          <div class="skill-bar"><div class="skill-name"><span>Recording Engineering</span><span>90%</span></div><div class="skill-track"><div class="skill-fill" style="width:90%"></div></div></div>
+          <div class="skill-bar"><div class="skill-name"><span>Live Sound / FOH</span><span>88%</span></div><div class="skill-track"><div class="skill-fill" style="width:88%"></div></div></div>
+          <div class="skill-bar"><div class="skill-name"><span>AV System Design</span><span>85%</span></div><div class="skill-track"><div class="skill-fill" style="width:85%"></div></div></div>
+          <div class="skill-bar"><div class="skill-name"><span>Podcast Production</span><span>92%</span></div><div class="skill-track"><div class="skill-fill" style="width:92%"></div></div></div>
+          <div class="skill-bar"><div class="skill-name"><span>Post-Production Audio</span><span>87%</span></div><div class="skill-track"><div class="skill-fill" style="width:87%"></div></div></div>
+        </div>
+        <div>
+          <span class="section-tag">// Genres & Formats</span>
+          <h3 style="font-family:'Bebas Neue';font-size:28px;margin-bottom:24px">We Work With</h3>
+          <div style="display:flex;flex-wrap:wrap;gap:8px">
+            <span class="tag">Hip-Hop / Rap</span><span class="tag">R&B / Soul</span><span class="tag">Rock / Metal</span><span class="tag">Pop</span><span class="tag">Country</span><span class="tag">Electronic</span><span class="tag">Podcast</span><span class="tag">Corporate Video</span><span class="tag">Indie</span><span class="tag">Jazz</span><span class="tag">Voice-Over</span><span class="tag">Live Events</span><span class="tag">Film Audio</span><span class="tag">Streaming</span>
           </div>
-        </div>
-      </div>
-      <div class="testi-card">
-        <span class="testi-quote-mark" aria-hidden="true">"</span>
-        <div class="testi-stars" aria-label="5 stars">★★★★★</div>
-        <p class="testi-text">I've worked with a lot of engineers. Galaxy stood out because they actually listened to what the song needed. The mastered version sounds incredible on every platform.</p>
-        <div class="testi-author">
-          <div class="testi-avatar" aria-hidden="true">JL</div>
-          <div>
-            <div class="testi-name">Jamie L.</div>
-            <div class="testi-role">Indie Singer-Songwriter</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Newsletter -->
-  <section class="section" style="padding-top:0">
-    <div class="newsletter-block">
-      <div>
-        <h2>Stay in the Loop</h2>
-        <p>Industry updates, new services, and exclusive rate announcements for subscribers. No spam, ever.</p>
-      </div>
-      <form class="newsletter-form" onsubmit="return false;">
-        <input type="email" placeholder="your@email.com" aria-label="Email address" required />
-        <button type="submit" class="btn btn-primary">Subscribe</button>
-      </form>
-    </div>
-  </section>
-
-</main><!-- /page-home -->
-
-
-<!-- ============================================================
-     PAGE: ABOUT
-     ============================================================ -->
-<main id="page-about" class="page" role="main">
-
-  <div class="inner-hero">
-    <div class="inner-hero-grid" aria-hidden="true"></div>
-    <div class="inner-hero-content">
-      <div class="hero-badge" style="display:inline-flex;margin-bottom:24px">
-        <span class="hero-badge-dot" aria-hidden="true"></span>
-        Founded 2023 · Muncy, PA · Remote Worldwide
-      </div>
-      <h1>The Engineer<br>Behind the <span class="accent">Sound</span></h1>
-    </div>
-  </div>
-
-  <section class="section">
-
-    <!-- Bio split -->
-    <div class="about-split">
-      <div>
-        <span class="section-eyebrow">// About Galaxy Recording Co</span>
-        <h2 class="section-title">Precision Audio.<br>Real Experience.</h2>
-        <p style="color:var(--text-muted);line-height:1.8;margin-bottom:1.2rem">
-          Galaxy Recording Co — in partnership with JJ Gair Music — is a professional audio engineering and AV technology operation founded in late 2023. We deliver radio-ready recordings, live event audio, and AV solutions for artists, businesses, and organizations.
-        </p>
-        <p style="color:var(--text-muted);line-height:1.8;margin-bottom:2rem">
-          Whether you're an independent artist looking for your first polished single, a band ready to track an EP, a business needing corporate video audio, or an event that demands flawless live sound — we have the skills, equipment, and experience to make it happen, anywhere in the world.
-        </p>
-        <div style="display:flex;gap:14px;flex-wrap:wrap">
-          <button class="btn btn-primary" onclick="showPage('contact')">Work With Us ↗</button>
-          <button class="btn btn-secondary" onclick="showPage('services')">View Services</button>
-        </div>
-      </div>
-      <div class="about-visual" aria-hidden="true">
-        <span class="about-visual-emoji">🎚️</span>
-      </div>
-    </div>
-
-    <!-- Skills & Tags -->
-    <div class="grid-2" style="gap:56px;align-items:start">
-      <div>
-        <span class="section-eyebrow">// Skills &amp; Expertise</span>
-        <h3 style="font-family:'Bebas Neue',sans-serif;font-size:30px;margin-bottom:28px">Technical Proficiency</h3>
-
-        <div class="skill-bar">
-          <div class="skill-header"><span>Mixing &amp; Mastering</span><span class="skill-pct">95%</span></div>
-          <div class="skill-track"><div class="skill-fill" style="width:95%"></div></div>
-        </div>
-        <div class="skill-bar">
-          <div class="skill-header"><span>Recording Engineering</span><span class="skill-pct">90%</span></div>
-          <div class="skill-track"><div class="skill-fill" style="width:90%"></div></div>
-        </div>
-        <div class="skill-bar">
-          <div class="skill-header"><span>Live Sound / FOH</span><span class="skill-pct">88%</span></div>
-          <div class="skill-track"><div class="skill-fill" style="width:88%"></div></div>
-        </div>
-        <div class="skill-bar">
-          <div class="skill-header"><span>AV System Design</span><span class="skill-pct">85%</span></div>
-          <div class="skill-track"><div class="skill-fill" style="width:85%"></div></div>
-        </div>
-        <div class="skill-bar">
-          <div class="skill-header"><span>Podcast Production</span><span class="skill-pct">92%</span></div>
-          <div class="skill-track"><div class="skill-fill" style="width:92%"></div></div>
-        </div>
-        <div class="skill-bar">
-          <div class="skill-header"><span>Post-Production Audio</span><span class="skill-pct">87%</span></div>
-          <div class="skill-track"><div class="skill-fill" style="width:87%"></div></div>
-        </div>
-      </div>
-
-      <div>
-        <span class="section-eyebrow">// Genres &amp; Formats</span>
-        <h3 style="font-family:'Bebas Neue',sans-serif;font-size:30px;margin-bottom:20px">We Work With</h3>
-        <div class="tag-cloud" style="margin-bottom:32px">
-          <span class="tag">Hip-Hop / Rap</span>
-          <span class="tag">R&amp;B / Soul</span>
-          <span class="tag">Rock / Metal</span>
-          <span class="tag">Pop</span>
-          <span class="tag">Country</span>
-          <span class="tag">Electronic</span>
-          <span class="tag">Podcast</span>
-          <span class="tag">Corporate Video</span>
-          <span class="tag">Indie</span>
-          <span class="tag">Jazz</span>
-          <span class="tag">Voice-Over</span>
-          <span class="tag">Live Events</span>
-          <span class="tag">Film Audio</span>
-          <span class="tag">Streaming</span>
-        </div>
-
-        <h3 style="font-family:'Bebas Neue',sans-serif;font-size:30px;margin-bottom:20px">DAWs &amp; Software</h3>
-        <div class="tag-cloud">
-          <span class="tag">Pro Tools</span>
-          <span class="tag">Logic Pro</span>
-          <span class="tag">Ableton Live</span>
-          <span class="tag">FL Studio</span>
-          <span class="tag">Reaper</span>
-          <span class="tag">Waves Plugins</span>
-          <span class="tag">iZotope</span>
-          <span class="tag">UAD</span>
-          <span class="tag">FabFilter</span>
-          <span class="tag">Slate Digital</span>
-        </div>
-      </div>
-    </div>
-
-  </section>
-</main><!-- /page-about -->
-
-
-<!-- ============================================================
-     PAGE: SERVICES
-     ============================================================ -->
-<main id="page-services" class="page" role="main">
-
-  <div class="inner-hero">
-    <div class="inner-hero-grid" aria-hidden="true"></div>
-    <div class="inner-hero-content">
-      <div class="hero-badge" style="display:inline-flex;margin-bottom:24px">
-        <span class="hero-badge-dot" aria-hidden="true"></span>
-        Remote &amp; On-Site Available Worldwide
-      </div>
-      <h1>Our <span class="accent">Services</span></h1>
-    </div>
-  </div>
-
-  <section class="section">
-
-    <!-- Recording Engineering -->
-    <span class="section-eyebrow">// Recording Services</span>
-    <h2 class="section-title">Audio Engineering</h2>
-    <p class="section-sub">From raw tracks to polished, radio-ready masters — we handle every stage of the audio production process.</p>
-
-    <div class="grid-4" style="margin-bottom:64px">
-
-      <div class="service-card">
-        <span class="service-num">01 // RECORDING</span>
-        <div class="card-icon" aria-hidden="true">🎙️</div>
-        <h3>Tracking &amp; Recording</h3>
-        <p>Full vocal, instrument, and band recording sessions with top-tier microphones, preamps, and acoustic treatment. In-studio or hybrid sessions available.</p>
-        <ul class="card-features">
-          <li>Professional mic selection for every source</li>
-          <li>Vocal tuning &amp; comping</li>
-          <li>Multi-track session management</li>
-        </ul>
-        <div class="service-price">From $75<span> / session</span></div>
-      </div>
-
-      <div class="service-card">
-        <span class="service-num">02 // MIXING</span>
-        <div class="card-icon" aria-hidden="true">🎛️</div>
-        <h3>Mixing</h3>
-        <p>Full stem mixing with depth, punch, and clarity. Industry-standard plugins and analog-modeled processing. Stems accepted remotely worldwide.</p>
-        <ul class="card-features">
-          <li>Up to 2 free revisions included</li>
-          <li>All genres welcome</li>
-          <li>48–72 hr turnaround available</li>
-        </ul>
-        <div class="service-price">From $100<span> / song</span></div>
-      </div>
-
-      <div class="service-card">
-        <span class="service-num">03 // MASTERING</span>
-        <div class="card-icon" aria-hidden="true">💎</div>
-        <h3>Mastering</h3>
-        <p>Streaming-optimized masters for Spotify, Apple Music, YouTube, and beyond. Loudness standards met, dynamics and character preserved.</p>
-        <ul class="card-features">
-          <li>LUFS-compliant delivery</li>
-          <li>WAV + MP3 deliverables</li>
-          <li>Album sequencing available</li>
-        </ul>
-        <div class="service-price">From $50<span> / song</span></div>
-      </div>
-
-      <div class="service-card">
-        <span class="service-num">04 // PODCAST</span>
-        <div class="card-icon" aria-hidden="true">🎧</div>
-        <h3>Podcast Production</h3>
-        <p>End-to-end podcast audio — noise removal, EQ, compression, leveling, and export. Remote-friendly workflow with consistently fast delivery.</p>
-        <ul class="card-features">
-          <li>Intro/outro music editing</li>
-          <li>AI noise suppression</li>
-          <li>Episode-by-episode plans</li>
-        </ul>
-        <div class="service-price">From $40<span> / episode</span></div>
-      </div>
-
-    </div>
-
-    <!-- Divider -->
-    <div class="service-divider">
-      <span class="section-eyebrow" style="margin:0">// AV Technology</span>
-      <div class="service-divider-line"></div>
-    </div>
-    <h2 class="section-title" style="margin-bottom:16px">AV Tech Services</h2>
-    <p class="section-sub">Full-service AV engineering for live events, corporate environments, and permanent installations.</p>
-
-    <div class="grid-4">
-
-      <div class="service-card">
-        <span class="service-num">05 // LIVE SOUND</span>
-        <div class="card-icon" aria-hidden="true">🔊</div>
-        <h3>Live Sound Engineering</h3>
-        <p>FOH and monitor mixing for concerts, corporate events, conferences, houses of worship, and private events. Gear sourcing assistance available.</p>
-        <ul class="card-features">
-          <li>Front-of-house &amp; monitor mix</li>
-          <li>System setup &amp; teardown</li>
-          <li>Backline coordination</li>
-        </ul>
-        <div class="service-price">Custom Quote</div>
-      </div>
-
-      <div class="service-card">
-        <span class="service-num">06 // AV INSTALL</span>
-        <div class="card-icon" aria-hidden="true">📡</div>
-        <h3>AV System Design &amp; Install</h3>
-        <p>Full AV infrastructure design, procurement, and installation for businesses, meeting rooms, event venues, and production spaces of any size.</p>
-        <ul class="card-features">
-          <li>Site survey &amp; needs analysis</li>
-          <li>Equipment specification</li>
-          <li>Installation &amp; commissioning</li>
-        </ul>
-        <div class="service-price">Custom Quote</div>
-      </div>
-
-      <div class="service-card">
-        <span class="service-num">07 // CORPORATE</span>
-        <div class="card-icon" aria-hidden="true">🏢</div>
-        <h3>Corporate Audio &amp; Video</h3>
-        <p>Professional audio post for corporate videos, training materials, presentations, and internal communications. Remote delivery available.</p>
-        <ul class="card-features">
-          <li>Dialogue cleanup &amp; sweetening</li>
-          <li>Music licensing guidance</li>
-          <li>Fast turnaround for deadlines</li>
-        </ul>
-        <div class="service-price">From $60<span> / project</span></div>
-      </div>
-
-      <div class="service-card">
-        <span class="service-num">08 // REMOTE</span>
-        <div class="card-icon" aria-hidden="true">🌐</div>
-        <h3>Remote Engineering</h3>
-        <p>Send your files, we handle the rest. Fast turnaround, clear revisions process, and professional-grade results no matter where you are on earth.</p>
-        <ul class="card-features">
-          <li>Secure file transfer system</li>
-          <li>Real-time progress updates</li>
-          <li>All time zones accommodated</li>
-        </ul>
-        <div class="service-price">From $50<span> / project</span></div>
-      </div>
-
-    </div>
-
-    <!-- CTA -->
-    <div style="text-align:center;margin-top:64px;padding-top:56px;border-top:1px solid var(--border-faint)">
-      <h2 style="font-size:36px;margin-bottom:12px">Not Sure What You Need?</h2>
-      <p style="color:var(--text-muted);margin-bottom:28px;max-width:480px;margin-left:auto;margin-right:auto">Reach out and describe your project. We'll recommend the right service and give you an honest quote — no obligation.</p>
-      <button class="btn btn-primary" onclick="showPage('contact')">Get a Free Quote ↗</button>
-    </div>
-
-  </section>
-</main><!-- /page-services -->
-
-
-<!-- ============================================================
-     PAGE: PORTFOLIO
-     ============================================================ -->
-<main id="page-portfolio" class="page" role="main">
-
-  <div class="inner-hero">
-    <div class="inner-hero-grid" aria-hidden="true"></div>
-    <div class="inner-hero-content">
-      <div class="hero-badge" style="display:inline-flex;margin-bottom:24px">
-        <span class="hero-badge-dot" aria-hidden="true"></span>
-        Listen to Our Work
-      </div>
-      <h1>Portfolio &amp;<br><span class="accent">Projects</span></h1>
-    </div>
-  </div>
-
-  <section class="section">
-    <p class="section-sub" style="margin-bottom:0">A selection of recent projects across genres, formats, and services. Filter by category below.</p>
-
-    <!-- Filter -->
-    <div class="portfolio-filter" role="group" aria-label="Portfolio filter">
-      <button class="filter-btn active" data-filter="all"     onclick="filterPortfolio('all',this)">All Work</button>
-      <button class="filter-btn"        data-filter="mix"     onclick="filterPortfolio('mix',this)">Mixing</button>
-      <button class="filter-btn"        data-filter="master"  onclick="filterPortfolio('master',this)">Mastering</button>
-      <button class="filter-btn"        data-filter="record"  onclick="filterPortfolio('record',this)">Recording</button>
-      <button class="filter-btn"        data-filter="av"      onclick="filterPortfolio('av',this)">AV / Live</button>
-      <button class="filter-btn"        data-filter="podcast" onclick="filterPortfolio('podcast',this)">Podcast</button>
-    </div>
-
-    <div class="portfolio-grid" id="portfolioGrid">
-
-      <article class="portfolio-card" data-cat="mix">
-        <div class="portfolio-thumb" style="background:linear-gradient(135deg,#1a2035 0%,#2a1a40 100%)">
-          🎛️
-          <div class="portfolio-thumb-overlay"><div class="portfolio-play">▶</div></div>
-        </div>
-        <div class="portfolio-body">
-          <span class="portfolio-type">Mixing</span>
-          <h3>Late Night Sessions</h3>
-          <p>Hip-Hop EP · Full stem mix · 6 tracks</p>
-        </div>
-      </article>
-
-      <article class="portfolio-card" data-cat="master">
-        <div class="portfolio-thumb" style="background:linear-gradient(135deg,#1a2520 0%,#152535 100%)">
-          💎
-          <div class="portfolio-thumb-overlay"><div class="portfolio-play">▶</div></div>
-        </div>
-        <div class="portfolio-body">
-          <span class="portfolio-type">Mastering</span>
-          <h3>Analog Dreams</h3>
-          <p>Indie Rock Album · 12 tracks mastered</p>
-        </div>
-      </article>
-
-      <article class="portfolio-card" data-cat="record">
-        <div class="portfolio-thumb" style="background:linear-gradient(135deg,#251520 0%,#201530 100%)">
-          🎙️
-          <div class="portfolio-thumb-overlay"><div class="portfolio-play">▶</div></div>
-        </div>
-        <div class="portfolio-body">
-          <span class="portfolio-type">Recording</span>
-          <h3>Soul Sessions</h3>
-          <p>R&amp;B Single · Full vocal tracking + production</p>
-        </div>
-      </article>
-
-      <article class="portfolio-card" data-cat="av">
-        <div class="portfolio-thumb" style="background:linear-gradient(135deg,#152025 0%,#201530 100%)">
-          🔊
-          <div class="portfolio-thumb-overlay"><div class="portfolio-play">▶</div></div>
-        </div>
-        <div class="portfolio-body">
-          <span class="portfolio-type">Live Sound</span>
-          <h3>Riverfront Music Fest</h3>
-          <p>FOH engineering · 500+ attendees</p>
-        </div>
-      </article>
-
-      <article class="portfolio-card" data-cat="podcast">
-        <div class="portfolio-thumb" style="background:linear-gradient(135deg,#201a15 0%,#2a2015 100%)">
-          🎧
-          <div class="portfolio-thumb-overlay"><div class="portfolio-play">▶</div></div>
-        </div>
-        <div class="portfolio-body">
-          <span class="portfolio-type">Podcast</span>
-          <h3>The Business Brief</h3>
-          <p>Weekly corporate podcast · 40+ episodes</p>
-        </div>
-      </article>
-
-      <article class="portfolio-card" data-cat="mix">
-        <div class="portfolio-thumb" style="background:linear-gradient(135deg,#151a25 0%,#252035 100%)">
-          🎚️
-          <div class="portfolio-thumb-overlay"><div class="portfolio-play">▶</div></div>
-        </div>
-        <div class="portfolio-body">
-          <span class="portfolio-type">Mixing</span>
-          <h3>Neon Summer</h3>
-          <p>Pop single · Radio-ready mix</p>
-        </div>
-      </article>
-
-      <article class="portfolio-card" data-cat="av">
-        <div class="portfolio-thumb" style="background:linear-gradient(135deg,#201520 0%,#152020 100%)">
-          📡
-          <div class="portfolio-thumb-overlay"><div class="portfolio-play">▶</div></div>
-        </div>
-        <div class="portfolio-body">
-          <span class="portfolio-type">AV Install</span>
-          <h3>Regional Conference Center</h3>
-          <p>Full AV design + installation · Williamsport, PA</p>
-        </div>
-      </article>
-
-      <article class="portfolio-card" data-cat="master">
-        <div class="portfolio-thumb" style="background:linear-gradient(135deg,#251520 0%,#202520 100%)">
-          🎵
-          <div class="portfolio-thumb-overlay"><div class="portfolio-play">▶</div></div>
-        </div>
-        <div class="portfolio-body">
-          <span class="portfolio-type">Mastering</span>
-          <h3>Midnight Frequencies</h3>
-          <p>Electronic EP · Streaming master</p>
-        </div>
-      </article>
-
-      <article class="portfolio-card" data-cat="record">
-        <div class="portfolio-thumb" style="background:linear-gradient(135deg,#152025 0%,#251525 100%)">
-          🎸
-          <div class="portfolio-thumb-overlay"><div class="portfolio-play">▶</div></div>
-        </div>
-        <div class="portfolio-body">
-          <span class="portfolio-type">Recording</span>
-          <h3>Thunder Road</h3>
-          <p>Rock band · Full live tracking session</p>
-        </div>
-      </article>
-
-    </div>
-
-    <!-- External links -->
-    <div style="text-align:center;margin-top:52px;padding-top:48px;border-top:1px solid var(--border-faint)">
-      <p style="color:var(--text-muted);margin-bottom:20px;font-size:15px">Listen to samples and full tracks on our audio platforms</p>
-      <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
-        <a href="https://soundcloud.com/user-158907118" target="_blank" rel="noopener noreferrer">
-          <button class="btn btn-secondary">☁&nbsp; SoundCloud</button>
-        </a>
-        <a href="https://www.youtube.com/@GalaxyConquer" target="_blank" rel="noopener noreferrer">
-          <button class="btn btn-secondary">▶&nbsp; YouTube Channel</button>
-        </a>
-      </div>
-    </div>
-
-  </section>
-</main><!-- /page-portfolio -->
-
-
-<!-- ============================================================
-     PAGE: PRICING
-     ============================================================ -->
-<main id="page-pricing" class="page" role="main">
-
-  <div class="inner-hero">
-    <div class="inner-hero-grid" aria-hidden="true"></div>
-    <div class="inner-hero-content">
-      <div class="hero-badge" style="display:inline-flex;margin-bottom:24px">
-        <span class="hero-badge-dot" aria-hidden="true"></span>
-        Transparent Pricing · No Hidden Fees
-      </div>
-      <h1>Simple, Honest <span class="accent">Rates</span></h1>
-    </div>
-  </div>
-
-  <section class="section">
-    <span class="section-eyebrow">// Audio Engineering Plans</span>
-    <h2 class="section-title">Pick Your Plan</h2>
-    <p class="section-sub">No hidden fees. No bait-and-switch. What you see is what you pay — and every project gets our full attention.</p>
-
-    <div class="pricing-grid">
-
-      <!-- Starter -->
-      <div class="price-card">
-        <div class="price-name">Starter</div>
-        <div class="price-amount">$99</div>
-        <div class="price-period">per song — mix or master</div>
-        <ul class="price-features">
-          <li>Single song mix OR master</li>
-          <li>2 revisions included</li>
-          <li>48–72 hr turnaround</li>
-          <li>WAV + MP3 delivery</li>
-          <li>Remote-friendly upload</li>
-          <li>Email support</li>
-        </ul>
-        <button class="btn btn-secondary btn-full" onclick="showPage('contact')">Get Started</button>
-      </div>
-
-      <!-- Artist — Featured -->
-      <div class="price-card featured">
-        <div class="badge-popular">Most Popular</div>
-        <div class="price-name">Artist</div>
-        <div class="price-amount">$249</div>
-        <div class="price-period">per song — full service</div>
-        <ul class="price-features">
-          <li>Full mix <em>+</em> master combo</li>
-          <li>Vocal tuning &amp; editing included</li>
-          <li>3 revisions included</li>
-          <li>36 hr priority turnaround</li>
-          <li>WAV + MP3 + Stems delivery</li>
-          <li>1-on-1 feedback session</li>
-        </ul>
-        <button class="btn btn-primary btn-full" onclick="showPage('contact')">Book Now ↗</button>
-      </div>
-
-      <!-- EP / Album -->
-      <div class="price-card">
-        <div class="price-name">EP / Album</div>
-        <div class="price-amount">$499</div>
-        <div class="price-period">up to 6-song EP package</div>
-        <ul class="price-features">
-          <li>Full mix + master — up to 6 songs</li>
-          <li>Sequencing &amp; album prep</li>
-          <li>Unlimited revisions</li>
-          <li>Priority scheduling</li>
-          <li>All formats delivered</li>
-          <li>Dedicated project portal</li>
-        </ul>
-        <button class="btn btn-secondary btn-full" onclick="showPage('contact')">Contact Us</button>
-      </div>
-
-    </div>
-
-    <p style="text-align:center;color:var(--text-muted);font-size:14px;margin-top:22px">
-      AV tech, live sound, and corporate audio are custom-quoted.
-      <span class="link-accent" onclick="showPage('contact')">Request a free quote →</span>
-    </p>
-
-    <!-- FAQ -->
-    <div style="margin-top:80px">
-      <span class="section-eyebrow">// FAQ</span>
-      <h2 class="section-title" style="margin-bottom:32px">Common Questions</h2>
-
-      <div class="faq-list">
-
-        <div class="faq-item">
-          <div class="faq-q">
-            Do you work with clients outside of Pennsylvania?
-            <span class="faq-icon">+</span>
-          </div>
-          <div class="faq-a">
-            Absolutely — in fact, most of our mixing and mastering work is done remotely. You upload your files through a secure link, we get to work, and deliver your finished audio digitally. No geographic limits whatsoever.
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <div class="faq-q">
-            What file formats do you accept?
-            <span class="faq-icon">+</span>
-          </div>
-          <div class="faq-a">
-            We accept WAV, AIFF, and MP3. For stems, we strongly prefer 24-bit WAV files at 44.1 kHz or higher. We'll send you a clear checklist of exactly what to prepare after you book.
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <div class="faq-q">
-            How long does a mix or master take?
-            <span class="faq-icon">+</span>
-          </div>
-          <div class="faq-a">
-            Standard turnaround is 48–72 hours for single tracks. Rush delivery (24 hr) is available at a small premium. EP and album projects are quoted individually with a delivery timeline agreed upfront — we never leave you guessing.
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <div class="faq-q">
-            How do revisions work?
-            <span class="faq-icon">+</span>
-          </div>
-          <div class="faq-a">
-            Each plan includes a set number of revisions. Submit your feedback clearly — in writing or voice memo — and we'll revise within 24 hours. We want you to be proud of the final product and won't stop until it's right.
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <div class="faq-q">
-            Can you handle live events and AV for businesses?
-            <span class="faq-icon">+</span>
-          </div>
-          <div class="faq-a">
-            Yes — AV tech and live sound engineering is a core part of what we do. We've worked corporate events, music venues, conferences, and houses of worship. Contact us for a custom quote on any live or installation project.
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <div class="faq-q">
-            Do you offer ongoing / retainer pricing?
-            <span class="faq-icon">+</span>
-          </div>
-          <div class="faq-a">
-            Yes. If you're a podcast producer, label, or business with regular audio needs, we offer discounted monthly retainer pricing. Reach out and we'll put together a package that fits your volume and budget.
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-  </section>
-</main><!-- /page-pricing -->
-
-
-<!-- ============================================================
-     PAGE: BLOG / UPDATES
-     ============================================================ -->
-<main id="page-blog" class="page" role="main">
-
-  <div class="inner-hero">
-    <div class="inner-hero-grid" aria-hidden="true"></div>
-    <div class="inner-hero-content">
-      <div class="hero-badge" style="display:inline-flex;margin-bottom:24px">
-        <span class="hero-badge-dot" aria-hidden="true"></span>
-        Studio Updates &amp; Industry Insights
-      </div>
-      <h1>Studio <span class="accent">Updates</span></h1>
-    </div>
-  </div>
-
-  <section class="section">
-    <p class="section-sub">Tips, industry knowledge, studio news, and behind-the-scenes updates from Galaxy Recording Co.</p>
-
-    <div class="blog-grid">
-
-      <article class="blog-card">
-        <div class="blog-thumb" style="background:linear-gradient(135deg,#1a2035,#0d1020)">🎛️</div>
-        <div class="blog-body">
-          <span class="blog-tag">Tips</span>
-          <h3>How to Prep Your Stems for a Professional Mix</h3>
-          <p>Everything you need to know before sending files to your engineer — from bouncing to naming conventions and gain staging.</p>
-          <div class="blog-meta"><span>May 2025</span><span>5 min read</span></div>
-        </div>
-      </article>
-
-      <article class="blog-card">
-        <div class="blog-thumb" style="background:linear-gradient(135deg,#20152a,#150d20)">🎙️</div>
-        <div class="blog-body">
-          <span class="blog-tag">Remote Work</span>
-          <h3>Remote Recording Sessions: What to Expect in 2025</h3>
-          <p>The remote audio workflow has matured. Here's how we handle remote sessions and what makes them work so well.</p>
-          <div class="blog-meta"><span>April 2025</span><span>4 min read</span></div>
-        </div>
-      </article>
-
-      <article class="blog-card">
-        <div class="blog-thumb" style="background:linear-gradient(135deg,#1a2520,#0d1a15)">💡</div>
-        <div class="blog-body">
-          <span class="blog-tag">AV Tech</span>
-          <h3>What Does an AV Tech Engineer Actually Do?</h3>
-          <p>Breaking down the role — from system design to live events — and why your business might need one sooner than you think.</p>
-          <div class="blog-meta"><span>March 2025</span><span>6 min read</span></div>
-        </div>
-      </article>
-
-      <article class="blog-card">
-        <div class="blog-thumb" style="background:linear-gradient(135deg,#201515,#150d0d)">🔊</div>
-        <div class="blog-body">
-          <span class="blog-tag">Live Sound</span>
-          <h3>5 Things That Go Wrong at Live Events (And How We Prevent Them)</h3>
-          <p>Real talk from the FOH position — the most common audio disasters and our checklist to avoid every single one.</p>
-          <div class="blog-meta"><span>Feb 2025</span><span>7 min read</span></div>
-        </div>
-      </article>
-
-      <article class="blog-card">
-        <div class="blog-thumb" style="background:linear-gradient(135deg,#1a1525,#100d1a)">📻</div>
-        <div class="blog-body">
-          <span class="blog-tag">Mastering</span>
-          <h3>Streaming Loudness Standards in 2025: LUFS Explained</h3>
-          <p>Spotify, Apple Music, YouTube — they all normalize audio differently. Here's what that means for your release strategy.</p>
-          <div class="blog-meta"><span>Jan 2025</span><span>5 min read</span></div>
-        </div>
-      </article>
-
-      <article class="blog-card">
-        <div class="blog-thumb" style="background:linear-gradient(135deg,#15201a,#0d1510)">🎵</div>
-        <div class="blog-body">
-          <span class="blog-tag">Studio</span>
-          <h3>Galaxy Recording Co: Our First Year in Review</h3>
-          <p>A look back at our first year — projects completed, lessons learned, and what's coming in 2025 and beyond.</p>
-          <div class="blog-meta"><span>Dec 2024</span><span>8 min read</span></div>
-        </div>
-      </article>
-
-    </div>
-  </section>
-</main><!-- /page-blog -->
-
-
-<!-- ============================================================
-     PAGE: CONTACT
-     ============================================================ -->
-<main id="page-contact" class="page" role="main">
-
-  <div class="inner-hero">
-    <div class="inner-hero-grid" aria-hidden="true"></div>
-    <div class="inner-hero-content">
-      <div class="hero-badge" style="display:inline-flex;margin-bottom:24px">
-        <span class="hero-badge-dot" aria-hidden="true"></span>
-        Let's Work Together
-      </div>
-      <h1>Get in <span class="accent">Touch</span></h1>
-    </div>
-  </div>
-
-  <section class="section">
-    <div class="contact-layout">
-
-      <!-- Form -->
-      <div class="contact-form-wrap">
-        <h3 style="font-family:'Bebas Neue',sans-serif;font-size:30px;margin-bottom:6px">Send a Message</h3>
-        <p style="color:var(--text-muted);font-size:14px;margin-bottom:28px">We respond within 24 hours — usually much faster. All inquiries welcome.</p>
-
-        <form id="contact-form" onsubmit="return false;" novalidate>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="first-name">First Name</label>
-              <input type="text" id="first-name" name="first_name" placeholder="John" autocomplete="given-name" required />
-            </div>
-            <div class="form-group">
-              <label for="last-name">Last Name</label>
-              <input type="text" id="last-name" name="last_name" placeholder="Doe" autocomplete="family-name" />
+          <div style="margin-top:32px">
+            <h3 style="font-family:'Bebas Neue';font-size:28px;margin-bottom:16px">Software & DAWs</h3>
+            <div style="display:flex;flex-wrap:wrap;gap:8px">
+              <span class="tag">Pro Tools</span><span class="tag">Logic Pro</span><span class="tag">Ableton Live</span><span class="tag">FL Studio</span><span class="tag">Reaper</span><span class="tag">Waves Plugins</span><span class="tag">iZotope</span><span class="tag">UAD</span>
             </div>
           </div>
-          <div class="form-group">
-            <label for="email">Email Address</label>
-            <input type="email" id="email" name="email" placeholder="john@example.com" autocomplete="email" required />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES PAGE -->
+<div class="page" id="page-services">
+  <div class="hero" style="min-height:280px;text-align:center">
+    <div class="hero-bg-grid"></div>
+    <div class="hero-content">
+      <div class="hero-badge">● Remote & On-Site Available</div>
+      <h1>OUR <span>SERVICES</span></h1>
+      <p class="hero-sub">From raw recordings to polished releases. From AV installs to live events. We do it all.</p>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-max">
+      <span class="section-tag">// Recording Services</span>
+      <h2 class="section-title">Audio Engineering</h2>
+      <div class="card-grid" style="margin-bottom:64px">
+        <div class="service-card">
+          <span class="service-num">01 // Recording</span>
+          <div class="card-icon" style="margin:0 0 16px">🎙️</div>
+          <h3 style="font-family:'Bebas Neue';font-size:26px">Tracking &amp; Recording</h3>
+          <p style="color:var(--textmuted);font-size:14px;line-height:1.7;margin:12px 0">Full vocal, instrument, and band recording sessions with top-tier microphones, preamps, and acoustic treatment. In-studio or hybrid sessions available.</p>
+          <ul style="list-style:none;margin-top:12px;display:flex;flex-direction:column;gap:8px">
+            <li style="font-size:13px;color:var(--textmuted)">✓ Pro mic selection for every source</li>
+            <li style="font-size:13px;color:var(--textmuted)">✓ Vocal tuning &amp; comping</li>
+            <li style="font-size:13px;color:var(--textmuted)">✓ Multi-track session management</li>
+          </ul>
+          <div class="service-price">From $75<span> / session</span></div>
+        </div>
+        <div class="service-card">
+          <span class="service-num">02 // Mixing</span>
+          <div class="card-icon" style="margin:0 0 16px">🎛️</div>
+          <h3 style="font-family:'Bebas Neue';font-size:26px">Mixing</h3>
+          <p style="color:var(--textmuted);font-size:14px;line-height:1.7;margin:12px 0">Full stem mixing with depth, punch, and clarity. Industry-standard plugins and analog-modeled processing. Stems accepted remotely.</p>
+          <ul style="list-style:none;margin-top:12px;display:flex;flex-direction:column;gap:8px">
+            <li style="font-size:13px;color:var(--textmuted)">✓ Up to 2 free revisions</li>
+            <li style="font-size:13px;color:var(--textmuted)">✓ All genres welcome</li>
+            <li style="font-size:13px;color:var(--textmuted)">✓ 48-72 hr turnaround available</li>
+          </ul>
+          <div class="service-price">From $100<span> / song</span></div>
+        </div>
+        <div class="service-card">
+          <span class="service-num">03 // Mastering</span>
+          <div class="card-icon" style="margin:0 0 16px">💎</div>
+          <h3 style="font-family:'Bebas Neue';font-size:26px">Mastering</h3>
+          <p style="color:var(--textmuted);font-size:14px;line-height:1.7;margin:12px 0">Streaming-optimized masters for Spotify, Apple Music, YouTube, and beyond. Loudness standards met, dynamics preserved.</p>
+          <ul style="list-style:none;margin-top:12px;display:flex;flex-direction:column;gap:8px">
+            <li style="font-size:13px;color:var(--textmuted)">✓ LUFS-compliant delivery</li>
+            <li style="font-size:13px;color:var(--textmuted)">✓ WAV + MP3 deliverables</li>
+            <li style="font-size:13px;color:var(--textmuted)">✓ Album sequencing available</li>
+          </ul>
+          <div class="service-price">From $50<span> / song</span></div>
+        </div>
+        <div class="service-card">
+          <span class="service-num">04 // Podcast</span>
+          <div class="card-icon" style="margin:0 0 16px">🎧</div>
+          <h3 style="font-family:'Bebas Neue';font-size:26px">Podcast Production</h3>
+          <p style="color:var(--textmuted);font-size:14px;line-height:1.7;margin:12px 0">End-to-end podcast audio — noise removal, EQ, compression, leveling, and export. Remote-friendly workflow with fast delivery.</p>
+          <ul style="list-style:none;margin-top:12px;display:flex;flex-direction:column;gap:8px">
+            <li style="font-size:13px;color:var(--textmuted)">✓ Intro/outro music editing</li>
+            <li style="font-size:13px;color:var(--textmuted)">✓ Noise suppression</li>
+            <li style="font-size:13px;color:var(--textmuted)">✓ Episode-by-episode plans</li>
+          </ul>
+          <div class="service-price">From $40<span> / episode</span></div>
+        </div>
+      </div>
+      <span class="section-tag">// AV Technology</span>
+      <h2 class="section-title">AV Tech Services</h2>
+      <div class="card-grid">
+        <div class="service-card">
+          <span class="service-num">05 // Live Sound</span>
+          <div class="card-icon" style="margin:0 0 16px">🔊</div>
+          <h3 style="font-family:'Bebas Neue';font-size:26px">Live Sound Engineering</h3>
+          <p style="color:var(--textmuted);font-size:14px;line-height:1.7;margin:12px 0">FOH and monitor mixing for concerts, corporate events, conferences, houses of worship, and private events. Gear sourcing available.</p>
+          <div class="service-price">Custom Quote</div>
+        </div>
+        <div class="service-card">
+          <span class="service-num">06 // AV Install</span>
+          <div class="card-icon" style="margin:0 0 16px">📡</div>
+          <h3 style="font-family:'Bebas Neue';font-size:26px">AV System Design &amp; Install</h3>
+          <p style="color:var(--textmuted);font-size:14px;line-height:1.7;margin:12px 0">Full AV infrastructure design, procurement, and installation for businesses, meeting rooms, event venues, and production spaces.</p>
+          <div class="service-price">Custom Quote</div>
+        </div>
+        <div class="service-card">
+          <span class="service-num">07 // Corporate</span>
+          <div class="card-icon" style="margin:0 0 16px">🏢</div>
+          <h3 style="font-family:'Bebas Neue';font-size:26px">Corporate Audio &amp; Video</h3>
+          <p style="color:var(--textmuted);font-size:14px;line-height:1.7;margin:12px 0">Professional audio post for corporate videos, training materials, presentations, and internal communications. Remote delivery available.</p>
+          <div class="service-price">From $60<span> / project</span></div>
+        </div>
+        <div class="service-card">
+          <span class="service-num">08 // Remote</span>
+          <div class="card-icon" style="margin:0 0 16px">🌐</div>
+          <h3 style="font-family:'Bebas Neue';font-size:26px">Remote Engineering</h3>
+          <p style="color:var(--textmuted);font-size:14px;line-height:1.7;margin:12px 0">Send your files, we handle the rest. Fast turnaround, clear revisions process, and professional-grade results no matter where you are.</p>
+          <div class="service-price">From $50<span> / project</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PORTFOLIO PAGE -->
+<div class="page" id="page-portfolio">
+  <div class="hero" style="min-height:280px">
+    <div class="hero-bg-grid"></div>
+    <div class="hero-content">
+      <div class="hero-badge">● Listen to Our Work</div>
+      <h1>PORTFOLIO &amp;<br><span>PROJECTS</span></h1>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-max">
+      <div class="portfolio-filter">
+        <button class="filter-btn active" onclick="filterPortfolio('all',this)">All Work</button>
+        <button class="filter-btn" onclick="filterPortfolio('mix',this)">Mixing</button>
+        <button class="filter-btn" onclick="filterPortfolio('master',this)">Mastering</button>
+        <button class="filter-btn" onclick="filterPortfolio('record',this)">Recording</button>
+        <button class="filter-btn" onclick="filterPortfolio('av',this)">AV / Live</button>
+        <button class="filter-btn" onclick="filterPortfolio('podcast',this)">Podcast</button>
+      </div>
+      <div class="portfolio-grid" id="portfolioGrid">
+        <div class="portfolio-item" data-cat="mix"><div class="portfolio-thumb" style="background:linear-gradient(135deg,#1a2035,#2a1535)">🎛️</div><div class="portfolio-meta"><span class="portfolio-type">Mixing</span><h3>Late Night Sessions</h3><p>Hip-Hop EP · Full stem mix · 6 tracks</p></div></div>
+        <div class="portfolio-item" data-cat="master"><div class="portfolio-thumb" style="background:linear-gradient(135deg,#1a2520,#152535)">💎</div><div class="portfolio-meta"><span class="portfolio-type">Mastering</span><h3>Analog Dreams</h3><p>Indie Rock Album · 12 tracks mastered</p></div></div>
+        <div class="portfolio-item" data-cat="record"><div class="portfolio-thumb" style="background:linear-gradient(135deg,#251520,#201530)">🎙️</div><div class="portfolio-meta"><span class="portfolio-type">Recording</span><h3>Soul Sessions</h3><p>R&amp;B Single · Full vocal tracking + production</p></div></div>
+        <div class="portfolio-item" data-cat="av"><div class="portfolio-thumb" style="background:linear-gradient(135deg,#152025,#201530)">🔊</div><div class="portfolio-meta"><span class="portfolio-type">Live Sound</span><h3>Riverfront Music Fest</h3><p>FOH engineering · 500+ attendees</p></div></div>
+        <div class="portfolio-item" data-cat="podcast"><div class="portfolio-thumb" style="background:linear-gradient(135deg,#201a15,#2a2015)">🎧</div><div class="portfolio-meta"><span class="portfolio-type">Podcast</span><h3>The Business Brief</h3><p>Weekly corporate podcast · 40+ episodes</p></div></div>
+        <div class="portfolio-item" data-cat="mix"><div class="portfolio-thumb" style="background:linear-gradient(135deg,#151a25,#252035)">🎚️</div><div class="portfolio-meta"><span class="portfolio-type">Mixing</span><h3>Neon Summer</h3><p>Pop single · Radio-ready mix</p></div></div>
+        <div class="portfolio-item" data-cat="av"><div class="portfolio-thumb" style="background:linear-gradient(135deg,#201520,#152020)">📡</div><div class="portfolio-meta"><span class="portfolio-type">AV Install</span><h3>Regional Conference Center</h3><p>Full AV design + installation</p></div></div>
+        <div class="portfolio-item" data-cat="master"><div class="portfolio-thumb" style="background:linear-gradient(135deg,#251520,#202520)">🎵</div><div class="portfolio-meta"><span class="portfolio-type">Mastering</span><h3>Midnight Frequencies</h3><p>Electronic EP · Streaming master</p></div></div>
+        <div class="portfolio-item" data-cat="record"><div class="portfolio-thumb" style="background:linear-gradient(135deg,#152025,#251525)">🎸</div><div class="portfolio-meta"><span class="portfolio-type">Recording</span><h3>Thunder Road</h3><p>Rock band · Full live tracking session</p></div></div>
+      </div>
+      <div style="text-align:center;margin-top:3rem">
+        <p style="color:var(--textmuted);margin-bottom:1rem">Listen to samples on SoundCloud or YouTube</p>
+        <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+          <a href="https://soundcloud.com/user-158907118" target="_blank"><button class="btn-secondary">☁ SoundCloud</button></a>
+          <a href="https://www.youtube.com/@GalaxyConquer" target="_blank"><button class="btn-secondary">▶ YouTube</button></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PRICING PAGE -->
+<div class="page" id="page-pricing">
+  <div class="hero" style="min-height:280px">
+    <div class="hero-bg-grid"></div>
+    <div class="hero-content">
+      <div class="hero-badge">● Transparent Pricing</div>
+      <h1>SIMPLE,<br><span>HONEST</span> RATES</h1>
+      <p class="hero-sub">No hidden fees. No bait-and-switch. What you see is what you pay — and every project gets our full attention.</p>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-max">
+      <span class="section-tag">// Audio Engineering Plans</span>
+      <h2 class="section-title">Pick Your Plan</h2>
+      <div class="pricing-grid">
+        <div class="price-card">
+          <div class="price-name">Starter</div>
+          <div class="price-amount">$99</div>
+          <div class="price-period">per song — mix or master</div>
+          <ul class="price-features">
+            <li>Single song mix OR master</li>
+            <li>2 revisions included</li>
+            <li>48-72 hr turnaround</li>
+            <li>WAV + MP3 delivery</li>
+            <li>Remote-friendly upload</li>
+          </ul>
+          <button class="btn-secondary" style="width:100%" onclick="showPage('contact')">Get Started</button>
+        </div>
+        <div class="price-card featured">
+          <div class="popular-badge">Most Popular</div>
+          <div class="price-name">Artist</div>
+          <div class="price-amount">$249</div>
+          <div class="price-period">per song — full service</div>
+          <ul class="price-features">
+            <li>Full mix + master combo</li>
+            <li>Vocal tuning &amp; editing</li>
+            <li>3 revisions included</li>
+            <li>36 hr priority turnaround</li>
+            <li>WAV + MP3 + Stems delivery</li>
+            <li>1-on-1 feedback session</li>
+          </ul>
+          <button class="btn-primary" style="width:100%" onclick="showPage('contact')">Book Now ↗</button>
+        </div>
+        <div class="price-card">
+          <div class="price-name">EP / Album</div>
+          <div class="price-amount">$499</div>
+          <div class="price-period">6-song EP package</div>
+          <ul class="price-features">
+            <li>Full mix + master for 6 songs</li>
+            <li>Sequencing &amp; album prep</li>
+            <li>Unlimited revisions</li>
+            <li>Priority scheduling</li>
+            <li>All formats delivered</li>
+            <li>Dedicated project portal</li>
+          </ul>
+          <button class="btn-secondary" style="width:100%" onclick="showPage('contact')">Contact Us</button>
+        </div>
+      </div>
+      <p style="text-align:center;color:var(--textmuted);font-size:14px;margin-top:24px">AV tech services, live sound, and corporate audio are custom-quoted. <span style="color:var(--accent);cursor:pointer" onclick="showPage('contact')">Request a quote →</span></p>
+      <div style="margin-top:64px">
+        <span class="section-tag">// FAQ</span>
+        <h2 class="section-title" style="margin-bottom:2rem">Common Questions</h2>
+        <div class="faq-list">
+          <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Do you work with clients outside of Pennsylvania?</div><div class="faq-a">Absolutely — in fact, most of our mixing and mastering work is done remotely. You upload your files through a secure link, we get to work, and deliver your finished audio digitally. No geographic limits.</div></div>
+          <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What file formats do you accept?</div><div class="faq-a">We accept WAV, AIFF, MP3, and most common DAW session formats. For stems, we prefer 24-bit WAV files at 44.1kHz or higher. We'll tell you exactly what to send after booking.</div></div>
+          <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How long does a mix or master take?</div><div class="faq-a">Standard turnaround is 48-72 hours for single tracks. Rush delivery (24 hr) is available at a small premium. EP and album projects are quoted individually with a delivery timeline agreed upfront.</div></div>
+          <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How do revisions work?</div><div class="faq-a">Each plan includes a set number of revisions. Submit your feedback clearly and we'll revise within 24 hours. We want you to be happy with the final product — we work until it's right.</div></div>
+          <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Can you handle live events and AV for businesses?</div><div class="faq-a">Yes — AV tech and live sound engineering is one of our core service areas. We've worked corporate events, music venues, conferences, and houses of worship. Contact us for a custom quote on any live or installation project.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BLOG PAGE -->
+<div class="page" id="page-blog">
+  <div class="hero" style="min-height:280px">
+    <div class="hero-bg-grid"></div>
+    <div class="hero-content">
+      <div class="hero-badge">● Studio Updates &amp; Industry Insights</div>
+      <h1>STUDIO <span>UPDATES</span></h1>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-max">
+      <div class="blog-grid">
+        <div class="blog-card"><div class="blog-thumb" style="background:linear-gradient(135deg,#1a2035,#0d1020)">🎛️</div><div class="blog-body"><span class="blog-tag">Tips</span><h3>How to Prep Your Stems for a Professional Mix</h3><p>Everything you need to know before sending files to your engineer — from bouncing to naming conventions.</p><div class="blog-meta"><span>May 2025</span><span>5 min read</span></div></div></div>
+        <div class="blog-card"><div class="blog-thumb" style="background:linear-gradient(135deg,#20152a,#150d20)">🎙️</div><div class="blog-body"><span class="blog-tag">Remote Work</span><h3>Remote Recording Sessions: What to Expect in 2025</h3><p>The remote audio workflow has matured. Here's how we handle remote sessions and what makes them work.</p><div class="blog-meta"><span>April 2025</span><span>4 min read</span></div></div></div>
+        <div class="blog-card"><div class="blog-thumb" style="background:linear-gradient(135deg,#1a2520,#0d1a15)">💡</div><div class="blog-body"><span class="blog-tag">AV Tech</span><h3>What Does an AV Tech Engineer Actually Do?</h3><p>Breaking down the role — from system design to live events — and why your business might need one.</p><div class="blog-meta"><span>March 2025</span><span>6 min read</span></div></div></div>
+        <div class="blog-card"><div class="blog-thumb" style="background:linear-gradient(135deg,#201515,#150d0d)">🔊</div><div class="blog-body"><span class="blog-tag">Live Sound</span><h3>5 Things That Go Wrong at Live Events (And How We Prevent Them)</h3><p>Real talk from the FOH position — the most common audio disasters and our checklist to avoid them.</p><div class="blog-meta"><span>Feb 2025</span><span>7 min read</span></div></div></div>
+        <div class="blog-card"><div class="blog-thumb" style="background:linear-gradient(135deg,#1a1525,#100d1a)">📻</div><div class="blog-body"><span class="blog-tag">Mastering</span><h3>Streaming Loudness Standards in 2025: LUFS Explained</h3><p>Spotify, Apple Music, YouTube — they all normalize audio differently. Here's what that means for your release.</p><div class="blog-meta"><span>Jan 2025</span><span>5 min read</span></div></div></div>
+        <div class="blog-card"><div class="blog-thumb" style="background:linear-gradient(135deg,#15201a,#0d1510)">🎵</div><div class="blog-body"><span class="blog-tag">Studio</span><h3>Galaxy Recording Co: Our First Year in Review</h3><p>A look back at our first year — projects, lessons learned, and what's coming in 2025 and beyond.</p><div class="blog-meta"><span>Dec 2024</span><span>8 min read</span></div></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT PAGE -->
+<div class="page" id="page-contact">
+  <div class="hero" style="min-height:280px">
+    <div class="hero-bg-grid"></div>
+    <div class="hero-content">
+      <div class="hero-badge">● Let's Work Together</div>
+      <h1>GET IN <span>TOUCH</span></h1>
+      <p class="hero-sub">Whether you're booking a session, requesting a quote, or just have questions — we want to hear from you.</p>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-max">
+      <div class="contact-grid">
+        <div class="contact-form">
+          <h3 style="font-family:'Bebas Neue';font-size:28px;margin-bottom:8px">Send a Message</h3>
+          <p style="color:var(--textmuted);font-size:14px;margin-bottom:24px">We respond within 24 hours, usually much faster.</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+            <div class="form-group"><label>First Name</label><input type="text" placeholder="John"></div>
+            <div class="form-group"><label>Last Name</label><input type="text" placeholder="Doe"></div>
           </div>
-          <div class="form-group">
-            <label for="service">Service Interested In</label>
-            <select id="service" name="service">
-              <option value="">Select a service…</option>
+          <div class="form-group"><label>Email</label><input type="email" placeholder="john@example.com"></div>
+          <div class="form-group"><label>Service Interested In</label>
+            <select>
+              <option>Select a service...</option>
               <option>Mixing</option>
               <option>Mastering</option>
-              <option>Mix + Master Combo</option>
               <option>Recording Session</option>
               <option>Podcast Production</option>
               <option>Live Sound / AV</option>
-              <option>AV System Design &amp; Install</option>
-              <option>Corporate Audio / Video</option>
-              <option>Remote Engineering</option>
-              <option>Other / Not Sure</option>
+              <option>AV System Design</option>
+              <option>Corporate Audio</option>
+              <option>Other</option>
             </select>
           </div>
-          <div class="form-group">
-            <label for="budget">Approximate Budget</label>
-            <select id="budget" name="budget">
-              <option value="">Select a range…</option>
-              <option>Under $100</option>
-              <option>$100 – $250</option>
-              <option>$250 – $500</option>
-              <option>$500 – $1,000</option>
-              <option>$1,000+</option>
-              <option>Not sure yet</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="message">Project Details</label>
-            <textarea id="message" name="message" placeholder="Tell us about your project — genre, number of tracks, deadline, remote or in-person, and anything else that's helpful." required></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary btn-full btn-submit">Send Message ↗</button>
-        </form>
-      </div>
-
-      <!-- Sidebar info -->
-      <div class="contact-sidebar">
-
-        <div>
-          <span class="section-eyebrow">// Direct Contact</span>
-          <h3 style="font-family:'Bebas Neue',sans-serif;font-size:30px;margin-bottom:20px">Reach Us Directly</h3>
+          <div class="form-group"><label>Project Details</label><textarea placeholder="Tell us about your project — genre, number of tracks, deadline, budget range, etc."></textarea></div>
+          <button class="btn-primary" style="width:100%">Send Message ↗</button>
         </div>
-
-        <div class="contact-info-card">
-          <div class="contact-icon" aria-hidden="true">📧</div>
+        <div class="contact-info">
           <div>
-            <h4>Email</h4>
-            <p>galaxyrecordingco@gmail.com</p>
-            <p style="font-size:12px;color:var(--text-dim);margin-top:4px">Best for project inquiries &amp; quotes</p>
+            <span class="section-tag">// Direct Contact</span>
+            <h3 style="font-family:'Bebas Neue';font-size:32px;margin-bottom:24px">Reach Us Directly</h3>
+          </div>
+          <div class="contact-info-card">
+            <div class="contact-icon">📧</div>
+            <div class="contact-detail"><h4>Email</h4><p>galaxyrecordingco@gmail.com</p><p style="margin-top:4px;font-size:12px;color:var(--textdim)">Best for project inquiries</p></div>
+          </div>
+          <div class="contact-info-card">
+            <div class="contact-icon">📍</div>
+            <div class="contact-detail"><h4>Location</h4><p>Muncy, Pennsylvania</p><p style="margin-top:4px;font-size:12px;color:var(--textdim)">Remote work available worldwide</p></div>
+          </div>
+          <div class="contact-info-card">
+            <div class="contact-icon">⏱️</div>
+            <div class="contact-detail"><h4>Response Time</h4><p>Within 24 hours</p><p style="margin-top:4px;font-size:12px;color:var(--textdim)">Usually same day</p></div>
+          </div>
+          <div class="contact-info-card">
+            <div class="contact-icon">🌐</div>
+            <div class="contact-detail"><h4>Social &amp; Audio</h4>
+              <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap">
+                <a href="https://soundcloud.com/user-158907118" target="_blank"><span class="tag">SoundCloud</span></a>
+                <a href="https://www.youtube.com/@GalaxyConquer" target="_blank"><span class="tag">YouTube</span></a>
+                <a href="https://www.linkedin.com/in/galaxy-recording-co-679ab8207/" target="_blank"><span class="tag">LinkedIn</span></a>
+                <a href="https://discord.gg/ufeJfpAS3b" target="_blank"><span class="tag">Discord</span></a>
+              </div>
+            </div>
           </div>
         </div>
-
-        <div class="contact-info-card">
-          <div class="contact-icon" aria-hidden="true">📍</div>
-          <div>
-            <h4>Location</h4>
-            <p>Muncy, Pennsylvania, USA</p>
-            <p style="font-size:12px;color:var(--text-dim);margin-top:4px">Remote work available worldwide</p>
-          </div>
-        </div>
-
-        <div class="contact-info-card">
-          <div class="contact-icon" aria-hidden="true">⏱️</div>
-          <div>
-            <h4>Response Time</h4>
-            <p>Within 24 hours</p>
-            <p style="font-size:12px;color:var(--text-dim);margin-top:4px">Usually same business day</p>
-          </div>
-        </div>
-
-        <div class="contact-social">
-          <h4>Find Us Online</h4>
-          <div class="social-grid">
-            <a href="https://soundcloud.com/user-158907118" target="_blank" rel="noopener noreferrer" class="social-btn">☁ SoundCloud</a>
-            <a href="https://www.youtube.com/@GalaxyConquer" target="_blank" rel="noopener noreferrer" class="social-btn">▶ YouTube</a>
-            <a href="https://www.linkedin.com/in/galaxy-recording-co-679ab8207/" target="_blank" rel="noopener noreferrer" class="social-btn">in LinkedIn</a>
-            <a href="https://discord.gg/ufeJfpAS3b" target="_blank" rel="noopener noreferrer" class="social-btn">💬 Discord</a>
-          </div>
-        </div>
-
       </div>
     </div>
-  </section>
-</main><!-- /page-contact -->
+  </div>
+</div>
 
-
-<!-- ============================================================
-     PAGE: CLIENT PORTAL / DASHBOARD
-     ============================================================ -->
-<main id="page-dashboard" class="page" role="main">
-  <div class="dashboard-layout">
-
-    <!-- Sidebar -->
-    <aside class="dash-sidebar" role="navigation" aria-label="Dashboard navigation">
-
-      <div style="padding:0 20px 20px;border-bottom:1px solid var(--border-faint);margin-bottom:8px">
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:16px;color:var(--accent);letter-spacing:0.08em">Client Portal</div>
-        <div style="font-size:12px;color:var(--text-dim);margin-top:2px;font-family:'Space Mono',monospace">Galaxy Recording Co</div>
+<!-- DASHBOARD PAGE -->
+<div class="page" id="page-dashboard">
+  <div class="dashboard">
+    <div class="dash-sidebar">
+      <div class="dash-nav-section">
+        <div class="dash-nav-label">Main</div>
+        <div class="dash-nav-item active">📊 <span>Overview</span></div>
+        <div class="dash-nav-item">📁 <span>My Projects</span></div>
+        <div class="dash-nav-item">💬 <span>Messages</span></div>
+        <div class="dash-nav-item">📅 <span>Sessions</span></div>
       </div>
-
-      <div class="dash-section-label">Main</div>
-      <div class="dash-nav-item active">
-        <span class="dash-nav-icon">📊</span> Overview
+      <div class="dash-nav-section">
+        <div class="dash-nav-label">Files</div>
+        <div class="dash-nav-item">⬆️ <span>Upload Files</span></div>
+        <div class="dash-nav-item">⬇️ <span>Downloads</span></div>
+        <div class="dash-nav-item">🎵 <span>Deliverables</span></div>
       </div>
-      <div class="dash-nav-item">
-        <span class="dash-nav-icon">📁</span> My Projects
+      <div class="dash-nav-section">
+        <div class="dash-nav-label">Account</div>
+        <div class="dash-nav-item">⚙️ <span>Settings</span></div>
+        <div class="dash-nav-item">💳 <span>Billing</span></div>
+        <div class="dash-nav-item">🚪 <span>Log Out</span></div>
       </div>
-      <div class="dash-nav-item">
-        <span class="dash-nav-icon">💬</span> Messages
-      </div>
-      <div class="dash-nav-item">
-        <span class="dash-nav-icon">📅</span> Sessions
-      </div>
-
-      <div class="dash-section-label">Files</div>
-      <div class="dash-nav-item">
-        <span class="dash-nav-icon">⬆️</span> Upload Files
-      </div>
-      <div class="dash-nav-item">
-        <span class="dash-nav-icon">⬇️</span> Downloads
-      </div>
-      <div class="dash-nav-item">
-        <span class="dash-nav-icon">🎵</span> Deliverables
-      </div>
-
-      <div class="dash-section-label">Account</div>
-      <div class="dash-nav-item">
-        <span class="dash-nav-icon">⚙️</span> Settings
-      </div>
-      <div class="dash-nav-item">
-        <span class="dash-nav-icon">💳</span> Billing
-      </div>
-      <div class="dash-nav-item" onclick="showPage('home')" style="margin-top:auto">
-        <span class="dash-nav-icon">🚪</span> Exit Portal
-      </div>
-
-    </aside>
-
-    <!-- Main content -->
+    </div>
     <div class="dash-main">
-
-      <!-- Top bar -->
-      <div class="dash-topbar">
-        <div>
+      <div class="dash-header">
+        <div class="dash-greeting">
           <h2>Welcome Back</h2>
-          <p>Here's what's happening with your projects</p>
+          <p>Client Portal · Galaxy Recording Co</p>
         </div>
-        <div class="dash-topbar-right">
-          <div class="dash-notif-btn" role="button" tabindex="0" aria-label="Notifications">
-            🔔
-            <div class="notif-dot" aria-label="3 unread notifications"></div>
+        <div style="display:flex;gap:12px;align-items:center">
+          <div style="position:relative;cursor:pointer">
+            <div style="width:36px;height:36px;border-radius:50%;background:var(--surface);border:1px solid var(--borderfaint);display:flex;align-items:center;justify-content:center;font-size:16px">🔔</div>
+            <div class="notification-dot"></div>
           </div>
-          <div class="dash-avatar" role="button" tabindex="0" aria-label="Account menu">CL</div>
+          <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--accent),#8b6a3e);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue';font-size:15px;color:#080a0f;cursor:pointer">CL</div>
         </div>
       </div>
-
-      <!-- Stats row -->
-      <div class="dash-stats-row">
-        <div class="stat-card">
-          <div class="stat-card-label">Active Projects</div>
-          <div class="stat-card-value">3</div>
-          <div class="stat-card-delta delta-up">↑ 1 new this week</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-card-label">Files Ready</div>
-          <div class="stat-card-value">7</div>
-          <div class="stat-card-delta delta-up">↑ 2 delivered today</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-card-label">Revisions Used</div>
-          <div class="stat-card-value">1<span style="font-size:18px;color:var(--text-dim)">/3</span></div>
-          <div class="stat-card-delta delta-warn">2 remaining</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-card-label">Next Session</div>
-          <div class="stat-card-value" style="font-size:28px">Jun 3</div>
-          <div class="stat-card-delta delta-info">2 booked total</div>
-        </div>
+      <div class="dash-stats">
+        <div class="dash-stat"><div class="dash-stat-label">Active Projects</div><div class="dash-stat-val">3</div><div class="dash-stat-change">↑ 1 new this week</div></div>
+        <div class="dash-stat"><div class="dash-stat-label">Files Ready</div><div class="dash-stat-val">7</div><div class="dash-stat-change">↑ 2 delivered today</div></div>
+        <div class="dash-stat"><div class="dash-stat-label">Revisions Used</div><div class="dash-stat-val">1/3</div><div class="dash-stat-change" style="color:var(--accent)">2 remaining</div></div>
+        <div class="dash-stat"><div class="dash-stat-label">Sessions Booked</div><div class="dash-stat-val">2</div><div class="dash-stat-change">Next: June 3rd</div></div>
       </div>
-
-      <!-- Two-panel row -->
-      <div class="dash-grid-2">
-
-        <!-- Projects -->
+      <div class="dash-grid">
         <div class="dash-panel">
-          <div class="dash-panel-title">
-            Active Projects
-            <span class="dash-panel-action">View all →</span>
-          </div>
-
-          <div class="dash-project-row">
-            <div>
-              <div class="dash-project-name">Late Night Sessions EP</div>
-              <div class="dash-project-meta">Hip-Hop · 6 tracks · Mix v2 delivered</div>
-            </div>
-            <span class="badge-status status-mix">Mixing</span>
-          </div>
-          <div class="dash-project-row">
-            <div>
-              <div class="dash-project-name">Acoustic Sessions Vol. 2</div>
-              <div class="dash-project-meta">Folk · 4 tracks · Stems received</div>
-            </div>
-            <span class="badge-status status-record">Recording</span>
-          </div>
-          <div class="dash-project-row">
-            <div>
-              <div class="dash-project-name">Pop Single — Summer Release</div>
-              <div class="dash-project-meta">Pop · 1 track · Approved ✓</div>
-            </div>
-            <span class="badge-status status-master">Mastering</span>
-          </div>
+          <h3>Active Projects</h3>
+          <div class="dash-project-item"><div><div class="proj-name">Late Night Sessions EP</div><div class="proj-client">Hip-Hop · 6 tracks</div></div><span class="proj-status status-mix">Mixing</span></div>
+          <div class="dash-project-item"><div><div class="proj-name">Acoustic Sessions Vol.2</div><div class="proj-client">Folk · 4 tracks</div></div><span class="proj-status status-record">Recording</span></div>
+          <div class="dash-project-item"><div><div class="proj-name">Pop Single Release</div><div class="proj-client">Pop · 1 track</div></div><span class="proj-status status-master">Mastering</span></div>
         </div>
-
-        <!-- Activity -->
         <div class="dash-panel">
-          <div class="dash-panel-title">
-            Recent Activity
-            <span class="dash-panel-action">All activity →</span>
-          </div>
-
-          <div class="dash-activity-item">
-            <div class="activity-dot" style="background:var(--accent)"></div>
-            <div>
-              <div class="activity-text">Mix v2 delivered for "Late Night Sessions"</div>
-              <div class="activity-time">Today · 2:14 PM</div>
-            </div>
-          </div>
-          <div class="dash-activity-item">
-            <div class="activity-dot" style="background:var(--green)"></div>
-            <div>
-              <div class="activity-text">Master approved — "Pop Single" ready to download</div>
-              <div class="activity-time">Yesterday · 11:30 AM</div>
-            </div>
-          </div>
-          <div class="dash-activity-item">
-            <div class="activity-dot" style="background:var(--red)"></div>
-            <div>
-              <div class="activity-text">Session rescheduled to June 3rd</div>
-              <div class="activity-time">May 20 · 9:00 AM</div>
-            </div>
-          </div>
-          <div class="dash-activity-item">
-            <div class="activity-dot" style="background:var(--accent)"></div>
-            <div>
-              <div class="activity-text">Stems uploaded for "Acoustic Sessions Vol. 2"</div>
-              <div class="activity-time">May 18 · 4:55 PM</div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Quick actions -->
-      <div class="dash-panel">
-        <div class="dash-panel-title">Quick Actions</div>
-        <div class="quick-actions">
-          <button class="quick-action-btn">⬆️ Upload Stems</button>
-          <button class="quick-action-btn">📅 Book a Session</button>
-          <button class="quick-action-btn">💬 Message Engineer</button>
-          <button class="quick-action-btn">🎵 Request Revision</button>
-          <button class="quick-action-btn primary">⬇️ Download Files</button>
+          <h3>Recent Activity</h3>
+          <div class="dash-activity-item"><div class="activity-dot"></div><div><div class="activity-text">Mix v2 delivered for "Late Night Sessions"</div><div class="activity-time">Today · 2:14pm</div></div></div>
+          <div class="dash-activity-item"><div class="activity-dot" style="background:var(--green)"></div><div><div class="activity-text">Master approved — "Pop Single" ready for download</div><div class="activity-time">Yesterday · 11:30am</div></div></div>
+          <div class="dash-activity-item"><div class="activity-dot" style="background:var(--red)"></div><div><div class="activity-text">Session rescheduled to June 3rd</div><div class="activity-time">May 20 · 9:00am</div></div></div>
+          <div class="dash-activity-item"><div class="activity-dot"></div><div><div class="activity-text">Stems uploaded for "Acoustic Sessions Vol.2"</div><div class="activity-time">May 18 · 4:55pm</div></div></div>
         </div>
       </div>
-
-    </div><!-- /dash-main -->
-  </div><!-- /dashboard-layout -->
-</main><!-- /page-dashboard -->
-
-
-<!-- ============================================================
-     FOOTER
-     ============================================================ -->
-<footer id="site-footer" role="contentinfo">
-  <div class="footer-inner">
-
-    <div class="footer-grid">
-
-      <!-- Brand -->
-      <div>
-        <div class="nav-logo" onclick="showPage('home')" style="cursor:pointer" role="link" tabindex="0">
-          <div class="nav-logo-mark" aria-hidden="true">G</div>
-          <div class="nav-logo-text">
-            <span class="nav-logo-primary">Galaxy Recording Co</span>
-            <span class="nav-logo-sub">Audio &amp; AV Engineering</span>
-          </div>
-        </div>
-        <p class="footer-brand-desc">
-          Professional Recording Engineering &amp; AV Technology — serving artists, businesses, and events locally and remotely since 2023. In partnership with JJ Gair Music.
-        </p>
-        <div class="social-row">
-          <a href="https://soundcloud.com/user-158907118" target="_blank" rel="noopener noreferrer" class="social-pill" aria-label="SoundCloud">☁ SoundCloud</a>
-          <a href="https://www.youtube.com/@GalaxyConquer" target="_blank" rel="noopener noreferrer" class="social-pill" aria-label="YouTube">▶ YouTube</a>
-          <a href="https://www.linkedin.com/in/galaxy-recording-co-679ab8207/" target="_blank" rel="noopener noreferrer" class="social-pill" aria-label="LinkedIn">in LinkedIn</a>
-          <a href="https://discord.gg/ufeJfpAS3b" target="_blank" rel="noopener noreferrer" class="social-pill" aria-label="Discord">💬 Discord</a>
+      <div style="margin-top:20px;background:var(--surface);border:1px solid var(--borderfaint);border-radius:16px;padding:24px">
+        <h3 style="font-family:'Bebas Neue';font-size:20px;margin-bottom:16px;color:var(--text)">Quick Actions</h3>
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+          <button class="btn-secondary" style="font-size:13px;padding:10px 18px">⬆️ Upload Stems</button>
+          <button class="btn-secondary" style="font-size:13px;padding:10px 18px">📅 Book Session</button>
+          <button class="btn-secondary" style="font-size:13px;padding:10px 18px">💬 Message Engineer</button>
+          <button class="btn-primary" style="font-size:13px;padding:10px 18px">⬇️ Download Files</button>
         </div>
       </div>
-
-      <!-- Services -->
-      <div class="footer-col">
-        <h4>Services</h4>
-        <ul>
-          <li onclick="showPage('services')">Mixing</li>
-          <li onclick="showPage('services')">Mastering</li>
-          <li onclick="showPage('services')">Recording</li>
-          <li onclick="showPage('services')">Podcast Production</li>
-          <li onclick="showPage('services')">Live Sound</li>
-          <li onclick="showPage('services')">AV Tech &amp; Installs</li>
-          <li onclick="showPage('services')">Corporate Audio</li>
-          <li onclick="showPage('services')">Remote Engineering</li>
-        </ul>
-      </div>
-
-      <!-- Navigate -->
-      <div class="footer-col">
-        <h4>Navigate</h4>
-        <ul>
-          <li onclick="showPage('home')">Home</li>
-          <li onclick="showPage('about')">About</li>
-          <li onclick="showPage('portfolio')">Portfolio</li>
-          <li onclick="showPage('pricing')">Pricing</li>
-          <li onclick="showPage('blog')">Studio Updates</li>
-          <li onclick="showPage('contact')">Contact</li>
-          <li onclick="showPage('dashboard')">Client Portal</li>
-        </ul>
-      </div>
-
-      <!-- Contact -->
-      <div class="footer-col">
-        <h4>Contact</h4>
-        <ul>
-          <li>📧 galaxyrecordingco@gmail.com</li>
-          <li>📍 Muncy, PA · Remote Available</li>
-          <li style="margin-top:8px">
-            <span class="link-accent" onclick="showPage('contact')">→ Get a Free Quote</span>
-          </li>
-          <li>
-            <span class="link-accent" onclick="showPage('contact')">→ Book a Session</span>
-          </li>
-          <li>
-            <span class="link-accent" onclick="showPage('pricing')">→ View Pricing</span>
-          </li>
-        </ul>
-      </div>
-
     </div>
+  </div>
+</div>
 
-    <div class="footer-divider"></div>
-
-    <div class="footer-bottom">
-      <span>© 2026 Galaxy Recording Co · In partnership with <a href="https://www.youtube.com/@GalaxyConquer" target="_blank" rel="noopener noreferrer">JJ Gair Music</a></span>
-      <span style="color:var(--text-faint)">Built with ♪ in Muncy, PA</span>
+<!-- FOOTER -->
+<footer id="mainFooter">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="nav-logo" style="margin-bottom:12px">
+        <div class="nav-logo-icon">G</div>
+        <span class="nav-logo-text">Galaxy Recording Co</span>
+      </div>
+      <p>Professional Recording Engineering &amp; AV Technology — serving artists, businesses, and events locally and remotely since 2023.</p>
+      <div class="social-links" style="margin-top:20px">
+        <a href="https://soundcloud.com/user-158907118" target="_blank"><div class="social-link">☁</div></a>
+        <a href="https://www.youtube.com/@GalaxyConquer" target="_blank"><div class="social-link">▶</div></a>
+        <a href="https://www.linkedin.com/in/galaxy-recording-co-679ab8207/" target="_blank"><div class="social-link">in</div></a>
+        <a href="https://discord.gg/ufeJfpAS3b" target="_blank"><div class="social-link">💬</div></a>
+      </div>
     </div>
-
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li onclick="showPage('services')">Mixing</li>
+        <li onclick="showPage('services')">Mastering</li>
+        <li onclick="showPage('services')">Recording</li>
+        <li onclick="showPage('services')">Podcast Production</li>
+        <li onclick="showPage('services')">Live Sound</li>
+        <li onclick="showPage('services')">AV Tech</li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Navigate</h4>
+      <ul>
+        <li onclick="showPage('home')">Home</li>
+        <li onclick="showPage('about')">About</li>
+        <li onclick="showPage('portfolio')">Portfolio</li>
+        <li onclick="showPage('pricing')">Pricing</li>
+        <li onclick="showPage('blog')">Updates</li>
+        <li onclick="showPage('dashboard')">Client Portal</li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li>📧 galaxyrecordingco@gmail.com</li>
+        <li>📍 Muncy, PA (Remote Available)</li>
+        <li onclick="showPage('contact')" style="color:var(--accent)">→ Get a Quote</li>
+        <li onclick="showPage('contact')" style="color:var(--accent)">→ Book a Session</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>©2026 Galaxy Recording Co. — In partnership with JJ Gair Music.</span>
+    <span style="color:var(--textdim)">Built with ♪ in Muncy, PA</span>
   </div>
 </footer>
 
+<script>
+let currentPage = 'home';
+let menuOpen = false;
 
-<!-- ============================================================
-     SCRIPTS
-     ============================================================ -->
-<script src="js/main.js"></script>
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+  document.querySelectorAll('.mobile-link').forEach(l => l.classList.remove('active'));
+  const page = document.getElementById('page-' + id);
+  if (page) { page.classList.add('active'); currentPage = id; }
+  const links = document.querySelectorAll('.nav-link, .mobile-link');
+  links.forEach(l => { if (l.textContent.trim().toLowerCase().includes(id) || (id === 'home' && l.textContent.trim() === 'Home') || (id === 'dashboard' && l.textContent.includes('Portal'))) l.classList.add('active'); });
+  const footer = document.getElementById('mainFooter');
+  if (footer) footer.style.display = id === 'dashboard' ? 'none' : 'block';
+  window.scrollTo(0,0);
+}
 
+function toggleMenu() {
+  menuOpen = !menuOpen;
+  const m = document.getElementById('mobileMenu');
+  if (menuOpen) m.classList.add('open'); else m.classList.remove('open');
+}
+
+function toggleFaq(el) {
+  const item = el.parentElement;
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+function filterPortfolio(cat, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.portfolio-item').forEach(item => {
+    if (cat === 'all' || item.dataset.cat === cat) {
+      item.style.display = 'block';
+    } else {
+      item.style.display = 'none';
+    }
+  });
+}
+
+document.querySelectorAll('.dash-nav-item').forEach(item => {
+  item.addEventListener('click', function() {
+    document.querySelectorAll('.dash-nav-item').forEach(i => i.classList.remove('active'));
+    this.classList.add('active');
+  });
+});
+</script>
 </body>
 </html>
