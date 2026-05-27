@@ -273,10 +273,10 @@ footer{background:var(--bg2);border-top:1px solid var(--borderfaint);padding:64p
     <div class="nav-link" onclick="showPage('about')">About</div>
     <div class="nav-link" onclick="showPage('services')">Services</div>
     <div class="nav-link" onclick="showPage('portfolio')">Portfolio</div>
-    <div class="nav-link" onclick="showPage('pricing')">Pricing</div>
+    <div class="nav-link" onclick="hidePage('pricing')">Pricing</div>
     <div class="nav-link" onclick="showPage('blog')">Updates</div>
     <div class="nav-link" onclick="showPage('contact')">Contact</div>
-    <div class="nav-link" onclick="showPage('dashboard')">Portal</div>
+    <div class="nav-link" onclick="hidePage('dashboard')">Portal</div>
     <div class="nav-cta" onclick="showPage('contact')">Book a Session ↗</div>
   </div>
   <button class="nav-mobile-btn" onclick="toggleMenu()">☰</button>
@@ -287,10 +287,10 @@ footer{background:var(--bg2);border-top:1px solid var(--borderfaint);padding:64p
   <div class="mobile-link" onclick="showPage('about');toggleMenu()">About</div>
   <div class="mobile-link" onclick="showPage('services');toggleMenu()">Services</div>
   <div class="mobile-link" onclick="showPage('portfolio');toggleMenu()">Portfolio</div>
-  <div class="mobile-link" onclick="showPage('pricing');toggleMenu()">Pricing</div>
+  <div class="mobile-link" onclick="hidePage('pricing');toggleMenu()">Pricing</div>
   <div class="mobile-link" onclick="showPage('blog');toggleMenu()">Updates</div>
   <div class="mobile-link" onclick="showPage('contact');toggleMenu()">Contact</div>
-  <div class="mobile-link" onclick="showPage('dashboard');toggleMenu()">Client Portal</div>
+  <div class="mobile-link" onclick="hidePage('dashboard');toggleMenu()">Client Portal</div>
 </div>
 
 <!-- HOME PAGE -->
