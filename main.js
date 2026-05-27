@@ -357,6 +357,19 @@ document.addEventListener('DOMContentLoaded', () => {
     initSectionAnimations();
   }, 100);
 
-  /* Show home page by default */
-  showPage('home');
+  // NEW: hash-based SPA handling
+  const hash = window.location.hash.replace('#', '');
+  if (hash && document.getElementById('page-' + hash)) {
+    showPage(hash);
+  } else {
+    showPage('home');
+  }
+});
+
+// Also allow user to navigate with back/forward buttons:
+window.addEventListener('hashchange', function () {
+  const hash = window.location.hash.replace('#', '');
+  if (hash && document.getElementById('page-' + hash)) {
+    showPage(hash);
+  }
 });
