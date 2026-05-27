@@ -26,6 +26,10 @@ function showPage(id) {
   page.classList.add('active');
   currentPage = id;
 
+   if (window.location.hash !== '#' + id) {
+      window.location.hash = id;
+   }
+
   /* Update nav link active states */
   $$('.nav-link').forEach(l => {
     l.classList.toggle('active', l.dataset.page === id);
