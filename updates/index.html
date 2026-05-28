@@ -1,1 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Updates | Galaxy Recording Co</title>
 
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0b0b12;
+      color: white;
+    }
+
+    /* Top bar (makes it feel like your real site) */
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 20px;
+      background: rgba(0,0,0,0.85);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .logo {
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    .home-btn {
+      text-decoration: none;
+      color: white;
+      border: 1px solid white;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+
+    /* Page intro */
+    .intro {
+      padding: 20px;
+    }
+
+    .intro h1 {
+      margin: 0;
+      font-size: 28px;
+    }
+
+    .intro p {
+      opacity: 0.7;
+      margin-top: 6px;
+    }
+
+    /* Embedded blog */
+    iframe {
+      width: 100%;
+      height: calc(100vh - 140px);
+      border: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Top Navigation -->
+  <div class="topbar">
+    <div class="logo">Galaxy Recording Co</div>
+    <a class="home-btn" href="/">Home</a>
+  </div>
+
+  <!-- Intro Section -->
+  <div class="intro">
+    <h1>Updates</h1>
+    <p>Latest releases, milestones, and behind-the-scenes from Galaxy Recording Co.</p>
+  </div>
+
+  <!-- Super.so Blog Embed -->
+  <iframe 
+    src="https://galaxy-recording-co--updates.super.site/">
+  </iframe>
+
+</body>
+</html>
