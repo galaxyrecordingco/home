@@ -269,30 +269,30 @@ footer{background:var(--bg2);border-top:1px solid var(--borderfaint);padding:64p
     <span class="nav-logo-text">Galaxy Recording Co</span>
   </div>
   <div class="nav-links">
-    <div class="nav-link active" onclick="showPage('home')">Home</div>
-    <div class="nav-link" onclick="showPage('about')">About</div>
-    <div class="nav-link" onclick="showPage('services')">Services</div>
-    <div class="nav-link" onclick="showPage('portfolio')">Portfolio</div>
-    <!-- <div class="nav-link" onclick="hidePage('pricing')">Pricing</div> -->
-    <div class="nav-link" onclick="showPage('blog')">Updates</div>
-    <div class="nav-link" onclick="showPage('contact')">Contact</div>
-    <!-- div class="nav-link" onclick="hidePage('dashboard')">Portal</div> -->
-    <div class="nav-cta" onclick="showPage('contact')">Book a Session ↗</div>
+    <div class="nav-link active" onclick="showPage('home')" data-page="home">Home</div>
+    <div class="nav-link" onclick="showPage('about')" data-page="about">About</div>
+    <div class="nav-link" onclick="showPage('services')" data-page="services">Services</div>
+    <div class="nav-link" onclick="showPage('portfolio')" data-page="portfolio">Portfolio</div>
+    <div class="nav-link" onclick="showPage('blog')" data-page="blog">Updates</div>
+    <div class="nav-link" onclick="showPage('contact')" data-page="contact">Contact</div>
+    <div class="nav-cta" onclick="showPage('contact')" data-page="contact">Book a Session ↗</div>
   </div>
   <button class="nav-mobile-btn" onclick="toggleMenu()">☰</button>
 </nav>
+  <!-- div class="nav-link" onclick="hidePage('dashboard')">Portal</div> -->
+  <!-- <div class="nav-link" onclick="hidePage('pricing')">Pricing</div> -->
 
 <div class="mobile-menu" id="mobileMenu">
-  <div class="mobile-link active" onclick="showPage('home');toggleMenu()">Home</div>
-  <div class="mobile-link" onclick="showPage('about');toggleMenu()">About</div>
-  <div class="mobile-link" onclick="showPage('services');toggleMenu()">Services</div>
-  <div class="mobile-link" onclick="showPage('portfolio');toggleMenu()">Portfolio</div>
-  <!-- div class="mobile-link" onclick="hidePage('pricing');toggleMenu()">Pricing</div> -->
-  <div class="mobile-link" onclick="showPage('blog');toggleMenu()">Updates</div>
-  <div class="mobile-link" onclick="showPage('contact');toggleMenu()">Contact</div>
-  <!-- div class="mobile-link" onclick="hidePage('dashboard');toggleMenu()">Client Portal</div> -->
+  <div class="mobile-link active" onclick="showPage('home');toggleMenu()" data-page="home">Home</div>
+  <div class="mobile-link" onclick="showPage('about');toggleMenu()" data-page="about">About</div>
+  <div class="mobile-link" onclick="showPage('services');toggleMenu()" data-page="services">Services</div>
+  <div class="mobile-link" onclick="showPage('portfolio');toggleMenu()" data-page="portfolio">Portfolio</div>
+  <div class="mobile-link" onclick="showPage('updates');toggleMenu()" data-page="updates">Updates</div>
+  <div class="mobile-link" onclick="showPage('contact');toggleMenu()" data-page="contact">Contact</div>
 </div>
-
+  <!-- div class="mobile-link" onclick="hidePage('dashboard');toggleMenu()">Client Portal</div> -->
+  <!-- div class="mobile-link" onclick="hidePage('pricing');toggleMenu()">Pricing</div> -->
+  
 <!-- HOME PAGE -->
 <div class="page active" id="page-home">
   <div class="hero">
