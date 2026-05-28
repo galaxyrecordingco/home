@@ -371,9 +371,19 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Also allow user to navigate with back/forward buttons:
-window.addEventListener('hashchange', function () {
-  const hash = window.location.hash.replace('#', '');
-  if (hash && document.getElementById('page-' + hash)) {
-    showPage(hash);
+// 1. Define a function to sync the UI with the current hash
+function handleNavigation() {
+  const hash = window.location.hash.substring(1);
+  // Default to 'home' if no hash exists
+  const targetPage = hash || 'home'; 
+  
+  if (document.getElementById('page-' + targetPage)) {
+    showPage(targetPage);
   }
-});
+}
+
+// 2. Listen for URL changes (back/forward buttons)
+window.addEventListener('hashchange', handleNavigation);
+
+// 3. Run on initial page load (refresh)
+window.addEventListener('DOMContentLoaded', handleNavigation);
