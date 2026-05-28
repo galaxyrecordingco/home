@@ -1332,44 +1332,19 @@ h1, h2, h3, h4, h5 {
 /* ============================================
    BLOG / UPDATES
    ============================================ */
-.blog-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 22px;
-}
-
-.blog-card {
-  background: var(--surface);
-  border: 1px solid var(--border-faint);
+/* Blog Iframe Integration */
+.blog-iframe {
+  width: 100%;
+  height: 80vh; /* Adjust this to make it taller or shorter */
+  border: none;
+  display: block;
   border-radius: var(--radius-lg);
-  overflow: hidden;
+  background: transparent;
   transition: var(--transition);
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
 }
 
-.blog-card:hover {
-  border-color: var(--border);
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-card);
-}
-
-.blog-thumb {
-  height: 168px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 48px;
-}
-
-.blog-body {
-  padding: 26px 28px;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-
+/* These styles are kept for any remaining typography consistency 
+   if you have other elements in that section */
 .blog-tag {
   font-size: 10.5px;
   color: var(--accent);
@@ -1381,8 +1356,18 @@ h1, h2, h3, h4, h5 {
   display: block;
 }
 
-.blog-body h3 { font-size: 20px; line-height: 1.2; margin-bottom: 10px; }
-.blog-body p  { font-size: 13.5px; color: var(--text-muted); line-height: 1.65; flex: 1; margin-bottom: 18px; }
+.blog-body h3 { 
+  font-size: 20px; 
+  line-height: 1.2; 
+  margin-bottom: 10px; 
+}
+
+.blog-body p { 
+  font-size: 13.5px; 
+  color: var(--text-muted); 
+  line-height: 1.65; 
+  margin-bottom: 18px; 
+}
 
 .blog-meta {
   display: flex;
@@ -1392,8 +1377,6 @@ h1, h2, h3, h4, h5 {
   font-family: 'Space Mono', monospace;
   margin-top: auto;
 }
-
-
 /* ============================================
    NEWSLETTER
    ============================================ */
