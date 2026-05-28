@@ -1376,9 +1376,14 @@ h1, h2, h3, h4, h5 {
 
 .blog-body { padding: 24px; flex: 1; }
 .blog-tag { font-size: 10px; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; margin-bottom: 8px; display: block; }
-.blog-body h3 { font-size: 18px; margin-bottom: 10px; }
+.blog-body h3 { 
+    font-size: 18px; 
+    margin-top: 30px;    /* Adds space ABOVE the heading */
+    margin-bottom: 20px; /* Adds space BELOW the heading */
+}
 .blog-body p { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
 .blog-meta { margin-top: 15px; font-size: 11px; color: var(--text-dim); }
+
 
 /* ============================================
    NEWSLETTER
