@@ -1034,6 +1034,36 @@ document.querySelectorAll('.dash-nav-item').forEach(item => {
     this.classList.add('active');
   });
 });
+
+  // ... [Your existing code above this line] ...
+
+// Your existing dashboard logic
+document.querySelectorAll('.dash-nav-item').forEach(item => {
+  item.addEventListener('click', function() {
+    document.querySelectorAll('.dash-nav-item').forEach(i => i.classList.remove('active'));
+    this.classList.add('active');
+  });
+});
+
+// --- ADD THIS INITIALIZATION CODE BELOW ---
+
+function handleHash() {
+    const hash = window.location.hash.substring(1);
+    if (hash && document.getElementById('page-' + hash)) {
+        showPage(hash);
+    } else {
+        showPage('home');
+    }
+}
+
+// Run on load and whenever the hash changes
+window.addEventListener('DOMContentLoaded', handleHash);
+window.addEventListener('hashchange', handleHash);
+
+// --- END OF INITIALIZATION CODE ---
+</script>
+</body>
+</html>
 </script>
 </body>
 </html>
