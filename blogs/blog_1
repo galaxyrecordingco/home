@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>The Road to 'Tell It As It Is' | Galaxy Recording Co</title>
+    <!-- Link your same CSS file here -->
+    <link rel="stylesheet" href="style.css"> 
+</head>
+<body>
+
+    <!-- Nav (Same as your main page) -->
+    <nav>...</nav>
+
+    <!-- Content Area -->
+    <main class="section">
+        <div class="section-max">
+            <a href="index.html">← Back to Home</a>
+            <h1>The Road to 'Tell It As It Is'</h1>
+            <p>May 2025</p>
+            
+            <hr>
+            
+            <!-- YOUR FULL STORY GOES HERE -->
+            <article>
+                <p>This is where you write your full story. You can make this as long as you want without touching your main HTML file...</p>
+            </article>
+        </div>
+    </main>
+
+</body>
+</html>
