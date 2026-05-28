@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>The Road to 'Tell It As It Is' | Galaxy Recording Co</title>
-    <!-- Link your same CSS file here -->
+    
+    <!-- THIS IS THE LINE THAT LINKS YOUR CSS -->
     <link rel="stylesheet" href="style.css"> 
 </head>
 <body>
