@@ -1383,6 +1383,9 @@ h1, h2, h3, h4, h5 {
 }
 .blog-body p { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
 .blog-meta { margin-top: 15px; font-size: 11px; color: var(--text-dim); }
+.blog-text {
+    margin-bottom: 30px; /* Adjust this number to get the exact space you want */
+}
 
 
 /* ============================================
