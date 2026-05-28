@@ -897,18 +897,13 @@ footer{background:var(--bg2);border-top:1px solid var(--borderfaint);padding:64p
         <div class="dash-nav-item">📅 <span>Sessions</span></div>
       </div>
       <div class="dash-nav-section">
-        <div class="dash-nav-label">Files</div>
-        <div class="dash-nav-item">⬆️ <span>Upload Files</span></div>
-        <div class="dash-nav-item">⬇️ <span>Downloads</span></div>
-        <div class="dash-nav-item">🎵 <span>Deliverables</span></div>
-      </div>
-      <div class="dash-nav-section">
         <div class="dash-nav-label">Account</div>
         <div class="dash-nav-item">⚙️ <span>Settings</span></div>
         <div class="dash-nav-item">💳 <span>Billing</span></div>
-        <div class="dash-nav-item">🚪 <span>Log Out</span></div>
+        <div class="dash-nav-item" onclick="window.location.href='/'" style="cursor:pointer">🚪 <span>Log Out</span></div>
       </div>
     </div>
+
     <div class="dash-main">
       <div class="dash-header">
         <div class="dash-greeting">
@@ -916,47 +911,40 @@ footer{background:var(--bg2);border-top:1px solid var(--borderfaint);padding:64p
           <p>Client Portal · Galaxy Recording Co</p>
         </div>
         <div style="display:flex;gap:12px;align-items:center">
-          <div style="position:relative;cursor:pointer">
-            <div style="width:36px;height:36px;border-radius:50%;background:var(--surface);border:1px solid var(--borderfaint);display:flex;align-items:center;justify-content:center;font-size:16px">🔔</div>
-            <div class="notification-dot"></div>
-          </div>
-          <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--accent),#8b6a3e);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue';font-size:15px;color:#080a0f;cursor:pointer">CL</div>
+          <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--accent),#8b6a3e);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue';font-size:15px;color:#080a0f;">CL</div>
         </div>
       </div>
+
       <div class="dash-stats">
-        <div class="dash-stat"><div class="dash-stat-label">Active Projects</div><div class="dash-stat-val">3</div><div class="dash-stat-change">↑ 1 new this week</div></div>
-        <div class="dash-stat"><div class="dash-stat-label">Files Ready</div><div class="dash-stat-val">7</div><div class="dash-stat-change">↑ 2 delivered today</div></div>
-        <div class="dash-stat"><div class="dash-stat-label">Revisions Used</div><div class="dash-stat-val">1/3</div><div class="dash-stat-change" style="color:var(--accent)">2 remaining</div></div>
-        <div class="dash-stat"><div class="dash-stat-label">Sessions Booked</div><div class="dash-stat-val">2</div><div class="dash-stat-change">Next: June 3rd</div></div>
+        <div class="dash-stat"><div class="dash-stat-label">Active Projects</div><div class="dash-stat-val">3</div></div>
+        <div class="dash-stat"><div class="dash-stat-label">Revisions Used</div><div class="dash-stat-val">1/3</div></div>
+        <div class="dash-stat"><div class="dash-stat-label">Sessions Booked</div><div class="dash-stat-val">2</div></div>
+        <div class="dash-stat"><div class="dash-stat-label">Next Session</div><div class="dash-stat-val">June 3rd</div></div>
       </div>
+
       <div class="dash-grid">
         <div class="dash-panel">
           <h3>Active Projects</h3>
           <div class="dash-project-item"><div><div class="proj-name">Late Night Sessions EP</div><div class="proj-client">Hip-Hop · 6 tracks</div></div><span class="proj-status status-mix">Mixing</span></div>
           <div class="dash-project-item"><div><div class="proj-name">Acoustic Sessions Vol.2</div><div class="proj-client">Folk · 4 tracks</div></div><span class="proj-status status-record">Recording</span></div>
-          <div class="dash-project-item"><div><div class="proj-name">Pop Single Release</div><div class="proj-client">Pop · 1 track</div></div><span class="proj-status status-master">Mastering</span></div>
         </div>
         <div class="dash-panel">
           <h3>Recent Activity</h3>
-          <div class="dash-activity-item"><div class="activity-dot"></div><div><div class="activity-text">Mix v2 delivered for "Late Night Sessions"</div><div class="activity-time">Today · 2:14pm</div></div></div>
-          <div class="dash-activity-item"><div class="activity-dot" style="background:var(--green)"></div><div><div class="activity-text">Master approved — "Pop Single" ready for download</div><div class="activity-time">Yesterday · 11:30am</div></div></div>
-          <div class="dash-activity-item"><div class="activity-dot" style="background:var(--red)"></div><div><div class="activity-text">Session rescheduled to June 3rd</div><div class="activity-time">May 20 · 9:00am</div></div></div>
-          <div class="dash-activity-item"><div class="activity-dot"></div><div><div class="activity-text">Stems uploaded for "Acoustic Sessions Vol.2"</div><div class="activity-time">May 18 · 4:55pm</div></div></div>
+          <div class="dash-activity-item"><div class="activity-dot"></div><div><div class="activity-text">Mix v2 delivered for "Late Night Sessions"</div><div class="activity-time">Today</div></div></div>
+          <div class="dash-activity-item"><div class="activity-dot" style="background:var(--green)"></div><div><div class="activity-text">Master approved — "Pop Single"</div><div class="activity-time">Yesterday</div></div></div>
         </div>
       </div>
+
       <div style="margin-top:20px;background:var(--surface);border:1px solid var(--borderfaint);border-radius:16px;padding:24px">
         <h3 style="font-family:'Bebas Neue';font-size:20px;margin-bottom:16px;color:var(--text)">Quick Actions</h3>
         <div style="display:flex;gap:12px;flex-wrap:wrap">
-          <button class="btn-secondary" style="font-size:13px;padding:10px 18px">⬆️ Upload Stems</button>
-          <button class="btn-secondary" style="font-size:13px;padding:10px 18px">📅 Book Session</button>
-          <button class="btn-secondary" style="font-size:13px;padding:10px 18px">💬 Message Engineer</button>
-          <button class="btn-primary" style="font-size:13px;padding:10px 18px">⬇️ Download Files</button>
+          <a href="mailto:galaxyrecordingco@gmail.com" class="btn-secondary" style="font-size:13px;padding:10px 18px;text-decoration:none">💬 Message Engineer</a>
+          <a href="https://your-booking-link.com" target="_blank" class="btn-primary" style="font-size:13px;padding:10px 18px;text-decoration:none">📅 Book New Session</a>
         </div>
       </div>
     </div>
   </div>
 </div>
-
 <!-- FOOTER -->
 <footer id="mainFooter">
   <div class="footer-grid">
