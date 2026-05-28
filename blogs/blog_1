@@ -5,7 +5,7 @@
     <title>The Road to 'Tell It As It Is' | Galaxy Recording Co</title>
     
     <!-- THIS IS THE LINE THAT LINKS YOUR CSS -->
-    <link rel="stylesheet" href="style.css"> 
+    <link rel="stylesheet" href="../style.css"> 
 </head>
 <body>
 
