@@ -109,8 +109,8 @@ h1, h2, h3, h4, h5 {
 }
 
 .nav-logo-mark {
-  width: 40px;      /* Keeps the exact same size as the box */
-  height: 40px;     /* Keeps the exact same size as the box */
+  width: 20px;      /* Keeps the exact same size as the box */
+  height: 20px;     /* Keeps the exact same size as the box */
   flex-shrink: 0;   /* Prevents it from squishing */
   object-fit: contain; /* Ensures the circular logo isn't cut off */
   border-radius: var(--radius-sm); /* Keeps the slightly rounded corners */
