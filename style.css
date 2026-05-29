@@ -1155,11 +1155,9 @@ h1, h2, h3, h4, h5 {
    CONTACT
    ============================================ */
 .contact-layout {
-  display: grid;
-  /* Form takes up all available space, but sidebar stays at 380px */
-  grid-template-columns: 3fr 1fr !important;
-  gap: 52px;
-  align-items: start;
+  display: block; /* Removes the grid, allowing items to fill width */
+  max-width: 800px; /* Optional: Sets a comfortable width so it doesn't stretch too far on huge screens */
+  margin: 0 auto; /* Centers the form on the page */
 }
 
 .contact-form-wrap {
