@@ -1156,7 +1156,8 @@ h1, h2, h3, h4, h5 {
    ============================================ */
 .contact-layout {
   display: grid;
-  grid-template-columns: 1fr 3fr;
+  /* Form takes up all available space, but sidebar stays at 380px */
+  grid-template-columns: minmax(0, 3fr) 380px;
   gap: 52px;
   align-items: start;
 }
