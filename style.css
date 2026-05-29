@@ -110,11 +110,15 @@ h1, h2, h3, h4, h5 {
 }
 
 .nav-logo-mark {
-  width: 20px !important;      /* Keeps the exact same size as the box */
-  height: 20px !important;     /* Keeps the exact same size as the box */
-  flex-shrink: 0;   /* Prevents it from squishing */
-  object-fit: contain; /* Ensures the circular logo isn't cut off */
-  border-radius: var(--radius-sm); /* Keeps the slightly rounded corners */
+  /* Force the logo to stay small regardless of its file resolution */
+  width: 40px !important;
+  height: 40px !important;
+  /* This ensures the image isn't squashed if the aspect ratio differs */
+  object-fit: contain; 
+  /* Removes any border-radius if the image is square or round */
+  border-radius: var(--radius-sm);
+  /* Ensures the logo stays in line with the text */
+  display: block; 
 }
 
 .nav-logo-text {
