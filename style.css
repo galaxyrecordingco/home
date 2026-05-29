@@ -1090,7 +1090,7 @@ h1, h2, h3, h4, h5 {
    ============================================ */
 .testi-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 3fr, 1fr;
   gap: 20px;
 }
 
