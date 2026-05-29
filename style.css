@@ -1090,7 +1090,7 @@ h1, h2, h3, h4, h5 {
    ============================================ */
 .testi-grid {
   display: grid;
-  grid-template-columns: 3fr, 1fr;
+  grid-template-columns: repeat(3, 1fr);
   gap: 20px;
 }
 
@@ -1157,7 +1157,7 @@ h1, h2, h3, h4, h5 {
 .contact-layout {
   display: grid;
   /* Form takes up all available space, but sidebar stays at 380px */
-  grid-template-columns: minmax(0, 3fr) 380px;
+  grid-template-columns: 3fr 1fr !important;
   gap: 52px;
   align-items: start;
 }
