@@ -111,8 +111,8 @@ h1, h2, h3, h4, h5 {
 
 .nav-logo-mark {
   /* Force the logo to stay small regardless of its file resolution */
-  width: 40px !important;
-  height: 40px !important;
+  width: 50px !important;
+  height: 50px !important;
   /* This ensures the image isn't squashed if the aspect ratio differs */
   object-fit: contain; 
   /* Removes any border-radius if the image is square or round */
